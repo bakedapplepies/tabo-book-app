@@ -8,8 +8,7 @@ import {
 import React from 'react'
 
 import ProfileIcon from '../components/ProfileIcon';
-import BookDisplay from '../components/BookDisplay';
-import { BookDisplayProps } from '../components/BookDisplay';
+import BookDisplay, { BookDisplayProps } from '../components/BookDisplay';
 import {
   favoriteBooksData
 } from '../../data/BookData';

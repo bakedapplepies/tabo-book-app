@@ -1,5 +1,5 @@
 import {
-  Image,
+  ImageBackground,
   ImageSourcePropType,
   StyleSheet,
   Text,
@@ -10,6 +10,7 @@ import React from 'react'
 
 
 export interface BookDisplayProps {
+  enlarge?: boolean;
   imgSrc: ImageSourcePropType;
   title: string;
   author: string;
@@ -17,12 +18,14 @@ export interface BookDisplayProps {
 
 const BookDisplay = (props: BookDisplayProps) => {
   return (
-    <>
+    <View style={{ flexDirection: "column" }}>
       {/* Book cover */}
-      <TouchableOpacity style={styles.book_cover_view}>
-        <Image source={props.imgSrc} style={styles.book_cover} />
+      <TouchableOpacity
+        style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
+      >
+        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover"/>
       </TouchableOpacity>
-
+      
       {/* Title */}
       <TouchableOpacity>
         <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
@@ -32,7 +35,7 @@ const BookDisplay = (props: BookDisplayProps) => {
       <TouchableOpacity>
         <Text style={styles.author} numberOfLines={1}>{props.author}</Text>
       </TouchableOpacity>
-    </>
+    </View>
   )
 }
 
@@ -43,20 +46,30 @@ const styles = StyleSheet.create({
     width: 139,
     height: 175,
     // backgroundColor: "red",
+    backgroundColor: "transparent",
     paddingRight: 34,
   },
 
+  book_cover_view_enlarge: {
+    // width: 173,
+    // height: 216,
+    // backgroundColor: "red",
+    backgroundColor: "transparent",
+    // paddingRight: 34,
+  },
+
   book_cover: {
-    marginTop: -20,
-    width: "123%",
-    height: "123%",
+    marginTop: -25,
+    marginLeft: -13,
+    // width: 190,
+    // height: 246,
   },
 
   title: {
     width: 129,
     fontSize: 14,
     fontWeight: "600",
-    marginTop: 12
+    marginTop: 8
   },
 
   author: {

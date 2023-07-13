@@ -6,51 +6,22 @@ import {
 } from 'react-native'
 import React from 'react'
 import IconButton from '../components/IconButton'
-import { favoriteBooksData } from '../../data/BookData'
-import BookDisplay, { BookDisplayProps } from '../components/BookDisplay'
+import BookData, { favoriteBooksData } from '../../data/BookData'
+import BookDisplay from '../components/BookDisplay'
 
 
 const FavoriteScreen = () => {
 
-  const renderBookFavorite = (data: BookDisplayProps) => {
+  const renderBookFavorite = ({ imgSrc, title, author }: BookData) => {
     return (
-      <View>
-        <BookDisplay
-          imgSrc={data.imgSrc}
-          title={data.title}
-          author={data.author}
-        />
-      </View>
+      <BookDisplay
+        enlarge
+        style={{marginHorizontal: 6, marginBottom: 22}}
+        imgSrc={imgSrc}
+        title={title}
+        author={author}
+      />
     );
-  }
-
-  const renderBookFavorite2 = () => {
-    let render = [];
-
-    for (let i: number = 0; i < favoriteBooksData.length; i+=2)
-    {
-      let row: JSX.Element = (
-        <View style={{ flexDirection: "row", marginBottom: 25 }}>
-          <BookDisplay
-            enlarge
-            imgSrc={favoriteBooksData[i].imgSrc}
-            title={favoriteBooksData[i].title}
-            author={favoriteBooksData[i].author}
-          />
-          { (i + 1) < favoriteBooksData.length &&
-            <BookDisplay
-              enlarge
-              imgSrc={favoriteBooksData[i + 1].imgSrc}
-              title={favoriteBooksData[i + 1].title}
-              author={favoriteBooksData[i + 1].author}
-            />
-          }
-        </View>
-      )
-      render.push(row);
-    }
-
-    return render;
   }
 
   return (
@@ -72,8 +43,9 @@ const FavoriteScreen = () => {
 
       <FlatList
         style={styles.flatlist_style}
-        data={[{}]}
-        renderItem={() => (<View>{renderBookFavorite2()}</View>)}
+        data={favoriteBooksData}
+        renderItem={({ item }) => renderBookFavorite(item)}
+        numColumns={2}
       />
 
     </View>

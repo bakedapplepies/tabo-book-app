@@ -4,26 +4,26 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  ViewStyle
 } from 'react-native'
 import React from 'react'
+import BookData from '../../data/BookData';
 
 
-export interface BookDisplayProps {
+export interface BookDisplayProps extends BookData {
+  style?: ViewStyle
   enlarge?: boolean;
-  imgSrc: ImageSourcePropType;
-  title: string;
-  author: string;
 }
 
 const BookDisplay = (props: BookDisplayProps) => {
   return (
-    <View style={{ flexDirection: "column" }}>
+    <View style={{ ...props.style, flexDirection: "column" }}>
       {/* Book cover */}
       <TouchableOpacity
         style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
       >
-        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover"/>
+        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale"/>
       </TouchableOpacity>
       
       {/* Title */}
@@ -43,26 +43,19 @@ export default BookDisplay
 
 const styles = StyleSheet.create({
   book_cover_view: {
-    width: 139,
-    height: 175,
-    // backgroundColor: "red",
-    backgroundColor: "transparent",
-    paddingRight: 34,
+    width: 129,
+    height: 188,
   },
 
   book_cover_view_enlarge: {
-    // width: 173,
-    // height: 216,
-    // backgroundColor: "red",
+    width: 160,
+    height: 212,
     backgroundColor: "transparent",
-    // paddingRight: 34,
   },
 
   book_cover: {
-    marginTop: -25,
-    marginLeft: -13,
-    // width: 190,
-    // height: 246,
+    width: "100%",
+    height: "100%",
   },
 
   title: {

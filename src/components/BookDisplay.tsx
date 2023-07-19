@@ -1,19 +1,39 @@
 import {
   ImageBackground,
-  ImageSourcePropType,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  ViewStyle
+  ViewProps,
+  ViewStyle,
+  TouchableOpacityProps
 } from 'react-native'
 import React from 'react'
 import BookData from '../../data/BookData';
+import { NavigationProp } from '@react-navigation/native';
 
 
-export interface BookDisplayProps extends BookData {
-  style?: ViewStyle
+export interface BookDisplayProps extends BookData, TouchableOpacityProps {
+  style?: ViewStyle;
   enlarge?: boolean;
+  navigation?: NavigationProp<ReactNavigation.RootParamList>;
+}
+
+interface RatingProps extends ViewProps {
+  label: string
+}
+
+const Rating = (props: RatingProps) => {
+  return (
+    <View style={props.style}>
+      <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} />
+      <Text style={styles.rating_text}>
+        {props.label}
+      </Text>
+      <Text style={styles.max_rating_text}>/5</Text>
+    </View>
+  );
 }
 
 const BookDisplay = (props: BookDisplayProps) => {
@@ -22,10 +42,16 @@ const BookDisplay = (props: BookDisplayProps) => {
       {/* Book cover */}
       <TouchableOpacity
         style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
+        onPress={() => { props.onPress }}
       >
-        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale"/>
+        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale">
+          <Rating
+            style={styles.rating_view}
+            label="4,8"
+          />
+        </ImageBackground>
       </TouchableOpacity>
-      
+
       {/* Title */}
       <TouchableOpacity>
         <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
@@ -42,6 +68,32 @@ const BookDisplay = (props: BookDisplayProps) => {
 export default BookDisplay
 
 const styles = StyleSheet.create({
+  rating_view: {
+    zIndex: 1,
+    width: 47,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: "white",
+    marginTop: 8,
+    marginLeft: 8,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  rating_text: {
+    fontWeight: "700",
+    fontSize: 10,
+    color: "#1A1A1A",
+    marginHorizontal: 2,
+  },
+
+  max_rating_text: {
+    fontWeight: "700",
+    fontSize: 8,
+    color: "#B3B3B3"
+  },
+
   book_cover_view: {
     width: 129,
     height: 188,

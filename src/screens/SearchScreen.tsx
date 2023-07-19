@@ -4,23 +4,39 @@ import {
 	Text,
 	View,
 	Image,
+	TouchableOpacity
 } from 'react-native'
 import React from 'react'
 import IconButton from '../components/IconButton'
 import Input from '../components/Input'
 import BookData, { topBookSearchData } from '../../data/BookData'
+import { useNavigation } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// import HomeStackScreen from './HomeScreen'
+import DetailScreen from './DetailScreen'
 
 
 const SearchScreen = () => {
+	const navigation = useNavigation();
 
 	const renderTopBookSearch = ({ imgSrc, title, author }: BookData) => {
 		return (
 			<View style={styles.entry_style}>
-				<Image source={imgSrc} style={styles.book_icon} />
+
+				<TouchableOpacity onPress={() => { navigation.navigate("Detail") }}>
+					<Image source={imgSrc} style={styles.book_icon} />
+				</TouchableOpacity>
+
 				<View style={{ flexDirection: "column", width: 120 }} >
-					<Text numberOfLines={1} style={styles.title}>{title}</Text>
-					<Text numberOfLines={1} style={styles.author}>{author}</Text>
+					<TouchableOpacity>
+						<Text numberOfLines={1} style={styles.title}>{title}</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity>
+						<Text numberOfLines={1} style={styles.author}>{author}</Text>
+					</TouchableOpacity>
 				</View>
+
 			</View>
 		);
 	}
@@ -30,7 +46,11 @@ const SearchScreen = () => {
 			{/* top bar */}
 			<View style={styles.top_bar}>
 				<View style={{ flex: 1 }}>
-					<IconButton imgSrc={require("../../assets/ArrowBack.png")} style={styles.back_button} />
+					<IconButton
+						imgSrc={require("../../assets/ArrowBack.png")}
+						style={styles.back_button}
+						onPress={() => { navigation.goBack() }}
+					/>
 				</View>
 			</View>
 
@@ -51,12 +71,8 @@ const SearchScreen = () => {
 				numColumns={2}
 			/>
 		</View>
-
-
 	)
 }
-
-export default SearchScreen
 
 const styles = StyleSheet.create({
 	container: {
@@ -69,7 +85,7 @@ const styles = StyleSheet.create({
 	top_bar: {
 		flex: 0,
 		flexDirection: "row",
-		marginTop: 35,
+		marginTop: 55,
 		marginBottom: 25,
 		width: 345,
 		justifyContent: "center",
@@ -104,7 +120,8 @@ const styles = StyleSheet.create({
 
 	title: {
 		fontWeight: "600",
-		fontSize: 14
+		fontSize: 14,
+		marginBottom: 4
 	},
 
 	author: {
@@ -112,3 +129,18 @@ const styles = StyleSheet.create({
 		fontSize: 12
 	}
 })
+
+const SearchStackScreen = () => {
+	const SearchStack = createNativeStackNavigator();
+
+	return (
+		<SearchStack.Navigator initialRouteName="Search" screenOptions={{
+			headerShown: false
+		}}>
+			<SearchStack.Screen name="Search" component={SearchScreen} />
+			<SearchStack.Screen name="Detail" component={DetailScreen} />
+		</SearchStack.Navigator>
+	);
+}
+
+export default SearchStackScreen

@@ -16,7 +16,7 @@ interface IconButtonProps extends TouchableOpacityProps {
 
 const IconButton = (props: IconButtonProps) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onPress}>
       <Image source={props.imgSrc} style={props.style} resizeMode="contain" />
     </TouchableOpacity>
   )

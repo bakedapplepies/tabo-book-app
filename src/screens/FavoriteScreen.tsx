@@ -8,18 +8,22 @@ import React from 'react'
 import IconButton from '../components/IconButton'
 import BookData, { favoriteBooksData } from '../../data/BookData'
 import BookDisplay from '../components/BookDisplay'
+import { useNavigation } from '@react-navigation/native'
 
 
 const FavoriteScreen = () => {
+
+  const navigation = useNavigation();
 
   const renderBookFavorite = ({ imgSrc, title, author }: BookData) => {
     return (
       <BookDisplay
         enlarge
-        style={{marginHorizontal: 6, marginBottom: 22}}
+        style={{ marginHorizontal: 6, marginBottom: 22 }}
         imgSrc={imgSrc}
         title={title}
         author={author}
+        navigation={navigation}
       />
     );
   }
@@ -29,7 +33,11 @@ const FavoriteScreen = () => {
       {/* top bar */}
       <View style={styles.top_bar}>
         <View style={{ flex: 1 }}>
-          <IconButton imgSrc={require("../../assets/ArrowBack.png")} style={styles.back_button} />
+          <IconButton
+            imgSrc={require("../../assets/ArrowBack.png")}
+            style={styles.back_button}
+            onPress={() => { navigation.goBack() }}
+          />
         </View>
 
         <View style={{ flex: 1 }}>

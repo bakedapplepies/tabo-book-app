@@ -12,10 +12,15 @@ import BookDisplay, { BookDisplayProps } from '../components/BookDisplay';
 import {
   favoriteBooksData
 } from '../../data/BookData';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import DetailScreen from './DetailScreen';
 
 
 const HomeScreen = () => {
   const accountName: string = "Marcus Curtis";
+
+  const navigation = useNavigation();
 
   // callback for flatlist
   const renderBookHome = (data: BookDisplayProps) => {
@@ -25,6 +30,7 @@ const HomeScreen = () => {
           imgSrc={data.imgSrc}
           title={data.title}
           author={data.author}
+          navigation={navigation}
         />
       </View>
     );
@@ -93,8 +99,6 @@ const HomeScreen = () => {
     </ScrollView>
   )
 }
-
-export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -165,3 +169,18 @@ const styles = StyleSheet.create({
     marginTop: 12
   },
 })
+
+const HomeStackScreen = () => {
+  const HomeStack = createNativeStackNavigator();
+
+  return (
+    <HomeStack.Navigator initialRouteName="Home" screenOptions={{
+      headerShown: false
+    }}>
+      <HomeStack.Screen name="Home" component={HomeScreen}/>
+      <HomeStack.Screen name="Detail" component={DetailScreen}/>
+    </HomeStack.Navigator>
+  );
+}
+
+export default HomeStackScreen

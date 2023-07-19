@@ -9,29 +9,21 @@ import {
 import React from 'react'
 import Input from '../components/Input'
 import IconButton from '../components/IconButton'
-// import IconButton from '../components/IconButton'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
-
-// const BottomTab = () => {
-//   return (
-//     <View style={{ flexDirection: "row" }}>
-//       <IconButton imgSrc="../../assets/Home.png"/>
-//       <IconButton imgSrc="../../assets/Search.png"/>
-//       <IconButton imgSrc="../../assets/Favorite.png"/>
-//       <IconButton imgSrc="../../assets/Profile.png"/>
-//     </View>
-//   )
-// }
+import { useNavigation } from '@react-navigation/native'
 
 const ProfileScreen = () => {
-  // const Tab = createBottomTabNavigator();
+
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <View style={styles.top_bar}>
         <View style={{ flex: 1 }}>
-          <IconButton imgSrc={require("../../assets/ArrowBack.png")} style={styles.back_button}/>
+          <IconButton
+          imgSrc={require("../../assets/ArrowBack.png")}
+          style={styles.back_button}
+          onPress={() => { navigation.goBack() }}
+        />
         </View>
 
         <View style={{ flex: 1 }}>
@@ -46,8 +38,8 @@ const ProfileScreen = () => {
       <ScrollView style={{ flex: 0, }}>
         <View style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
           <Image source={require("../../assets/Avatar.png")} style={styles.pfp_icon} />
-          <TouchableOpacity style={{ marginTop: -15 }}>
-            <Image source={require("../../assets/Camera.png")} style={styles.camera_icon} resizeMode="center" />
+          <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
+            <Image source={require("../../assets/Camera.png")} style={styles.camera_icon_img} resizeMode="contain" />
           </TouchableOpacity>
           <Text style={styles.profile_name}>
             Marcus Curtis
@@ -69,7 +61,7 @@ const ProfileScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{ flex: 1, marginTop: 30 }}>
+        <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 20 }}>
           <Text style={styles.signout_text}>
             Sign out
           </Text>
@@ -121,7 +113,14 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: "#D9D9D9"
+    backgroundColor: "#D9D9D9",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  camera_icon_img: {
+    width: 18,
+    height: 18
   },
 
   profile_name: {
@@ -150,10 +149,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 16,
     marginHorizontal: 5,
-  },
-
-  signout_button: {
-
   },
 
   signout_text: {

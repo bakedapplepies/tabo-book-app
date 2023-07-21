@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import IconButton from '../components/IconButton'
-import BookData, { favoriteBooksData } from '../../data/BookData'
+import BookData, { favoriteBooksData } from '../data/BookData'
 import BookDisplay from '../components/BookDisplay'
 import { useNavigation } from '@react-navigation/native'
 

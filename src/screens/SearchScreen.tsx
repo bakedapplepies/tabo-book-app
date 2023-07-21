@@ -9,7 +9,7 @@ import {
 import React from 'react'
 import IconButton from '../components/IconButton'
 import Input from '../components/Input'
-import BookData, { topBookSearchData } from '../../data/BookData'
+import BookData, { topBookSearchData } from '../data/BookData'
 import { useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 // import HomeStackScreen from './HomeScreen'

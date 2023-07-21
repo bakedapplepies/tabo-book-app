@@ -11,7 +11,7 @@ import ProfileIcon from '../components/ProfileIcon';
 import BookDisplay, { BookDisplayProps } from '../components/BookDisplay';
 import {
   favoriteBooksData
-} from '../../data/BookData';
+} from '../data/BookData';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import DetailScreen from './DetailScreen';
@@ -170,17 +170,4 @@ const styles = StyleSheet.create({
   },
 })
 
-const HomeStackScreen = () => {
-  const HomeStack = createNativeStackNavigator();
-
-  return (
-    <HomeStack.Navigator initialRouteName="Home" screenOptions={{
-      headerShown: false
-    }}>
-      <HomeStack.Screen name="Home" component={HomeScreen}/>
-      <HomeStack.Screen name="Detail" component={DetailScreen}/>
-    </HomeStack.Navigator>
-  );
-}
-
-export default HomeStackScreen
+export default HomeScreen

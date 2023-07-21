@@ -10,7 +10,7 @@ import {
   TouchableOpacityProps
 } from 'react-native'
 import React from 'react'
-import BookData from '../../data/BookData';
+import BookData from '../data/BookData';
 import { NavigationProp } from '@react-navigation/native';
 
 
@@ -42,7 +42,7 @@ const BookDisplay = (props: BookDisplayProps) => {
       {/* Book cover */}
       <TouchableOpacity
         style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
-        onPress={() => { props.onPress }}
+        onPress={() => { props.navigation?.navigate("Detail") }}
       >
         <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale">
           <Rating

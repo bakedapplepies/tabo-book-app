@@ -7,9 +7,10 @@ import {
   ScrollView,
 } from 'react-native'
 import React from 'react'
-import Input from '../components/Input'
-import IconButton from '../components/IconButton'
+import Input from '../../components/Input'
+import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
+
 
 const ProfileScreen = () => {
 
@@ -20,10 +21,10 @@ const ProfileScreen = () => {
       <View style={styles.top_bar}>
         <View style={{ flex: 1 }}>
           <IconButton
-          imgSrc={require("../../assets/ArrowBack.png")}
-          style={styles.back_button}
-          onPress={() => { navigation.goBack() }}
-        />
+            imgSrc={require("../../../assets/ArrowBack.png")}
+            style={styles.back_button}
+            onPress={() => { navigation.goBack() }}
+          />
         </View>
 
         <View style={{ flex: 1 }}>
@@ -31,15 +32,15 @@ const ProfileScreen = () => {
             Edit Profile
           </Text>
         </View>
-        
+
         <View style={{ flex: 1 }} />
       </View>
 
       <ScrollView style={{ flex: 0, }}>
         <View style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
-          <Image source={require("../../assets/Avatar.png")} style={styles.pfp_icon} />
+          <Image source={require("../../../assets/Avatar.png")} style={styles.pfp_icon} />
           <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
-            <Image source={require("../../assets/Camera.png")} style={styles.camera_icon_img} resizeMode="contain" />
+            <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} resizeMode="contain" />
           </TouchableOpacity>
           <Text style={styles.profile_name}>
             Marcus Curtis
@@ -54,7 +55,7 @@ const ProfileScreen = () => {
           <Input label="NEW PASSWORD" placeholder="New Password" secureTextEntry />
 
           <TouchableOpacity style={styles.update_button}>
-            <Image source={require("../../assets/Refresh.png")} style={styles.update_icon} />
+            <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} />
             <Text style={styles.update_text}>
               Update
             </Text>

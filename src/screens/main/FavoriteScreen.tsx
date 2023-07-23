@@ -5,9 +5,9 @@ import {
   View,
 } from 'react-native'
 import React from 'react'
-import IconButton from '../components/IconButton'
-import BookData, { favoriteBooksData } from '../data/BookData'
-import BookDisplay from '../components/BookDisplay'
+import IconButton from '../../components/IconButton'
+import BookData, { favoriteBooksData } from '../../data/BookData'
+import BookDisplay from '../../components/BookDisplay'
 import { useNavigation } from '@react-navigation/native'
 
 
@@ -23,7 +23,6 @@ const FavoriteScreen = () => {
         imgSrc={imgSrc}
         title={title}
         author={author}
-        navigation={navigation}
       />
     );
   }
@@ -34,7 +33,7 @@ const FavoriteScreen = () => {
       <View style={styles.top_bar}>
         <View style={{ flex: 1 }}>
           <IconButton
-            imgSrc={require("../../assets/ArrowBack.png")}
+            imgSrc={require("../../../assets/ArrowBack.png")}
             style={styles.back_button}
             onPress={() => { navigation.goBack() }}
           />

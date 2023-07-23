@@ -7,17 +7,18 @@ import {
 	TouchableOpacity
 } from 'react-native'
 import React from 'react'
-import IconButton from '../components/IconButton'
-import Input from '../components/Input'
-import BookData, { topBookSearchData } from '../data/BookData'
+import IconButton from '../../components/IconButton'
+import Input from '../../components/Input'
+import BookData, { topBookSearchData } from '../../data/BookData'
 import { useNavigation } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-// import HomeStackScreen from './HomeScreen'
-import DetailScreen from './DetailScreen'
+import { RootStackParams } from '../../navigation/config'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
+
+type NavigationProps = NativeStackScreenProps<RootStackParams, "Detail">;
 
 const SearchScreen = () => {
-	const navigation = useNavigation();
+	const navigation = useNavigation<NavigationProps["navigation"]>();
 
 	const renderTopBookSearch = ({ imgSrc, title, author }: BookData) => {
 		return (
@@ -47,7 +48,7 @@ const SearchScreen = () => {
 			<View style={styles.top_bar}>
 				<View style={{ flex: 1 }}>
 					<IconButton
-						imgSrc={require("../../assets/ArrowBack.png")}
+						imgSrc={require("../../../assets/ArrowBack.png")}
 						style={styles.back_button}
 						onPress={() => { navigation.goBack() }}
 					/>
@@ -55,7 +56,7 @@ const SearchScreen = () => {
 			</View>
 
 			<Input
-				icon={require("../../assets/Search.png")}
+				icon={require("../../../assets/Search.png")}
 				placeholder="Search title, topics or authors"
 				placeholderTextColor="#B3B3B3"
 			/>
@@ -83,9 +84,8 @@ const styles = StyleSheet.create({
 	},
 
 	top_bar: {
-		flex: 0,
 		flexDirection: "row",
-		marginTop: 55,
+		marginTop: 35,
 		marginBottom: 25,
 		width: 345,
 		justifyContent: "center",
@@ -130,17 +130,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-const SearchStackScreen = () => {
-	const SearchStack = createNativeStackNavigator();
-
-	return (
-		<SearchStack.Navigator initialRouteName="Search" screenOptions={{
-			headerShown: false
-		}}>
-			<SearchStack.Screen name="Search" component={SearchScreen} />
-			<SearchStack.Screen name="Detail" component={DetailScreen} />
-		</SearchStack.Navigator>
-	);
-}
-
-export default SearchStackScreen
+export default SearchScreen

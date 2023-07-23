@@ -7,20 +7,15 @@ import {
 } from 'react-native'
 import React from 'react'
 
-import ProfileIcon from '../components/ProfileIcon';
-import BookDisplay, { BookDisplayProps } from '../components/BookDisplay';
+import ProfileIcon from '../../components/ProfileIcon';
+import BookDisplay, { BookDisplayProps } from '../../components/BookDisplay';
 import {
   favoriteBooksData
-} from '../data/BookData';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
-import DetailScreen from './DetailScreen';
+} from '../../data/BookData';
 
 
 const HomeScreen = () => {
   const accountName: string = "Marcus Curtis";
-
-  const navigation = useNavigation();
 
   // callback for flatlist
   const renderBookHome = (data: BookDisplayProps) => {
@@ -30,7 +25,6 @@ const HomeScreen = () => {
           imgSrc={data.imgSrc}
           title={data.title}
           author={data.author}
-          navigation={navigation}
         />
       </View>
     );
@@ -48,7 +42,7 @@ const HomeScreen = () => {
 
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ProfileIcon
-              source={require("../../assets/Avatar.png")}
+              source={require("../../../assets/Avatar.png")}
               sidelen={64}
               style={{ margin: 18 }}
             />

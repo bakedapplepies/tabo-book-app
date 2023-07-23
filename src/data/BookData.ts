@@ -13,37 +13,37 @@ export default BookData;
 
 export const favoriteBooksData: BookData[] = [
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
@@ -51,82 +51,82 @@ export const favoriteBooksData: BookData[] = [
 
 export const topBookSearchData: BookData[] = [
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },
   {
-    imgSrc: require("../assets/BookCover.png"),
+    imgSrc: require("../../assets/BookCover.png"),
     title: "Emerson Ekstrom Bothman",
     author: "Corey Septimus"
   },

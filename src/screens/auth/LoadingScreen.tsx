@@ -10,7 +10,7 @@ import React from 'react'
 const LoadingScreen = () => {
 	return (
 		<View style={styles.container}>
-			<Image source={require("../../assets/BookWhite.png")} style={styles.logo} />
+			<Image source={require("../../../assets/BookWhite.png")} style={styles.logo} />
 			<Text style={styles.title}>T A B O</Text>
 		</View>
 	)

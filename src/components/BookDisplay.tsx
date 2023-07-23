@@ -11,13 +11,14 @@ import {
 } from 'react-native'
 import React from 'react'
 import BookData from '../data/BookData';
-import { NavigationProp } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParams } from '../navigation/config';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 export interface BookDisplayProps extends BookData, TouchableOpacityProps {
   style?: ViewStyle;
   enlarge?: boolean;
-  navigation?: NavigationProp<ReactNavigation.RootParamList>;
 }
 
 interface RatingProps extends ViewProps {
@@ -36,13 +37,17 @@ const Rating = (props: RatingProps) => {
   );
 }
 
+type BookDetailNavigationProps = NativeStackScreenProps<RootStackParams>
+
 const BookDisplay = (props: BookDisplayProps) => {
+  const navigation = useNavigation<BookDetailNavigationProps["navigation"]>();
+
   return (
     <View style={{ ...props.style, flexDirection: "column" }}>
       {/* Book cover */}
       <TouchableOpacity
         style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
-        onPress={() => { props.navigation?.navigate("Detail") }}
+        onPress={() => { navigation.navigate("Detail") }}
       >
         <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale">
           <Rating
@@ -53,12 +58,16 @@ const BookDisplay = (props: BookDisplayProps) => {
       </TouchableOpacity>
 
       {/* Title */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => { navigation.navigate("Detail") }}
+      >
         <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
       </TouchableOpacity>
 
       {/* Author */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => { navigation.navigate("Detail") }}  // change to author detail
+      >
         <Text style={styles.author} numberOfLines={1}>{props.author}</Text>
       </TouchableOpacity>
     </View>

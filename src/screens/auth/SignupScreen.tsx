@@ -12,7 +12,7 @@ import React from 'react'
 const SignupScreen = () => {
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/Book.png")} style={styles.book_logo} />
+      <Image source={require("../../../assets/Book.png")} style={styles.book_logo} />
 
       <Text style={styles.title}>
         Sign up

@@ -1,8 +1,10 @@
 import {
   FlatList,
-  StyleSheet,
   Text,
-  View,
+  Box,
+} from 'native-base'
+import {
+  StyleSheet
 } from 'react-native'
 import React from 'react'
 import IconButton from '../../components/IconButton'
@@ -28,25 +30,25 @@ const FavoriteScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <Box style={styles.container} safeAreaTop>
       {/* top bar */}
-      <View style={styles.top_bar}>
-        <View style={{ flex: 1 }}>
+      <Box style={styles.top_bar}>
+        <Box style={{ flex: 1 }}>
           <IconButton
             imgSrc={require("../../../assets/ArrowBack.png")}
             style={styles.back_button}
             onPress={() => { navigation.goBack() }}
           />
-        </View>
+        </Box>
 
-        <View style={{ flex: 1 }}>
-          <Text style={styles.title}>
+        <Box style={{ flex: 1 }}>
+          <Text style={styles.title} color="primary.main">
             Favorite
           </Text>
-        </View>
+        </Box>
 
-        <View style={{ flex: 1 }} />
-      </View>
+        <Box style={{ flex: 1 }} />
+      </Box>
 
       <FlatList
         style={styles.flatlist_style}
@@ -55,7 +57,7 @@ const FavoriteScreen = () => {
         numColumns={2}
       />
 
-    </View>
+    </Box>
   )
 }
 
@@ -85,7 +87,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F58216",
     fontWeight: "600",
     fontSize: 16,
     textAlign: "center",

@@ -1,10 +1,12 @@
 import {
 	FlatList,
-	StyleSheet,
 	Text,
-	View,
+	Box,
 	Image,
-	TouchableOpacity
+} from 'native-base'
+import {
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native'
 import React from 'react'
 import IconButton from '../../components/IconButton'
@@ -22,13 +24,13 @@ const SearchScreen = () => {
 
 	const renderTopBookSearch = ({ imgSrc, title, author }: BookData) => {
 		return (
-			<View style={styles.entry_style}>
+			<Box style={styles.entry_style}>
 
 				<TouchableOpacity onPress={() => { navigation.navigate("Detail") }}>
-					<Image source={imgSrc} style={styles.book_icon} />
+					<Image source={imgSrc} style={styles.book_icon} alt='book_icon' />
 				</TouchableOpacity>
 
-				<View style={{ flexDirection: "column", width: 120 }} >
+				<Box style={{ width: 120 }} >
 					<TouchableOpacity>
 						<Text numberOfLines={1} style={styles.title}>{title}</Text>
 					</TouchableOpacity>
@@ -36,24 +38,24 @@ const SearchScreen = () => {
 					<TouchableOpacity>
 						<Text numberOfLines={1} style={styles.author}>{author}</Text>
 					</TouchableOpacity>
-				</View>
+				</Box>
 
-			</View>
+			</Box>
 		);
 	}
 
 	return (
-		<View style={styles.container}>
+		<Box style={styles.container} safeAreaTop>
 			{/* top bar */}
-			<View style={styles.top_bar}>
-				<View style={{ flex: 1 }}>
+			<Box style={styles.top_bar}>
+				<Box style={{ flex: 1 }}>
 					<IconButton
 						imgSrc={require("../../../assets/ArrowBack.png")}
 						style={styles.back_button}
 						onPress={() => { navigation.goBack() }}
 					/>
-				</View>
-			</View>
+				</Box>
+			</Box>
 
 			<Input
 				icon={require("../../../assets/Search.png")}
@@ -61,7 +63,7 @@ const SearchScreen = () => {
 				placeholderTextColor="#B3B3B3"
 			/>
 
-			<Text style={styles.top_book_search}>
+			<Text style={styles.top_book_search} color="primary.main">
 				Top book search
 			</Text>
 
@@ -71,7 +73,7 @@ const SearchScreen = () => {
 				renderItem={({ item }) => renderTopBookSearch(item)}
 				numColumns={2}
 			/>
-		</View>
+		</Box>
 	)
 }
 
@@ -99,7 +101,6 @@ const styles = StyleSheet.create({
 
 	top_book_search: {
 		width: 345,
-		color: "#F58216",
 		fontSize: 17,
 		fontWeight: "700",
 		marginVertical: 5,

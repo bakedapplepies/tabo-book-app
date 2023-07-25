@@ -8,14 +8,17 @@ import HomeScreen from '../screens/main/HomeScreen';
 import SearchScreen from '../screens/main/SearchScreen';
 import FavoriteScreen from '../screens/main/FavoriteScreen';
 import ProfileScreen from '../screens/main/ProfileScreen';
+import tabo_theme from '../theme/tabo_theme';
 
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
 
+  const mainColor = tabo_theme.colors.primary.main;
+
   return (
     <Tab.Navigator initialRouteName="Home" screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#F58216"
+        tabBarActiveTintColor: mainColor
       }}
     >
 
@@ -36,7 +39,7 @@ const BottomTab = () => {
       />
 
       <Tab.Screen
-        name="Search"
+        name="Search"   
         component={SearchScreen}
         options={{
           tabBarIcon: ({ focused, color }) => (

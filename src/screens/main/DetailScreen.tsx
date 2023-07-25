@@ -1,92 +1,173 @@
 import {
-  StyleSheet,
   Text,
+  Box,
+  ScrollView
+} from 'native-base'
+import {
   View,
+  StyleSheet,
   Image,
   ImageBackground,
-  ScrollView
+  useWindowDimensions
 } from 'react-native'
 import React from 'react'
 import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
-// import { LinearGradient } from 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient'
 
 
-const DetailScreen = () => {
-  const navigation = useNavigation();
+const gradientHeight: number = 100;
+const backgroundWidth: number = 650;
+
+const InfoCard = () => {
+  const styles = useStyle();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.top_bar}>
-        <View style={{ flex: 1 }}>
+    <Box backgroundColor="gray.50" style={styles.info_card}>
+      <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
+        <Image source={require("../../../assets/Star.png")} style={{ width: 16, height: 16 }} />
+        <Text style={styles.rating} color="gray.900">
+          {4.8}
+        </Text>
+        <Text style={styles.max_rating} color="gray.300">/5</Text>
+      </Box>
+
+      <Box borderWidth={0.5} borderColor="gray.200" bgColor="gray.200" height={8} />
+
+      <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
+        <Image source={require("../../../assets/Eye.png")} style={{ width: 16, height: 16 }} />
+        <Text style={styles.rating} color="gray.900">
+          {4.2}k
+        </Text>
+      </Box>
+    </Box>
+  );
+}
+
+const DetailScreen = () => {
+  const screenWidth = useWindowDimensions().width;
+
+  const styles = useStyle();
+  const navigation = useNavigation();
+
+  // negative
+  const backgroundOffset = (screenWidth - backgroundWidth) / 2;
+
+  return (
+    <Box style={styles.container} safeAreaTop safeAreaX>
+      <Box style={styles.top_bar}>
+        <Box style={{ flex: 1 }}>
           <IconButton
             imgSrc={require("../../../assets/ArrowBack.png")}
             style={styles.left_topbar_button}
             onPress={() => { navigation.goBack() }}
           />
-        </View>
+        </Box>
 
-        <View style={{ flex: 1, alignItems: "flex-end" }}>
+        <Box style={{ flex: 1, alignItems: "flex-end" }}>
           <IconButton imgSrc={require("../../../assets/Favorite.png")} style={styles.right_topbar_button} />
-        </View>
-      </View>
+        </Box>
+      </Box>
 
       <ScrollView style={{ marginTop: -80 }}>
-        <View style={styles.container_bookcover}>
-          <Image
-            source={require("../../../assets/BookCover.png")}
-            style={{ opacity: 0.2, width: "100%", height: "100%", position: "absolute", left: "-20%" }}
-          />
+        <LinearGradient colors={["rgba(255, 255, 255, 1)", "transparent"]} style={{ ...styles.gradient, zIndex: 1, marginBottom: -gradientHeight }} />
 
-          {/* <LinearGradient colors={["rgba(255, 255, 255, 0.87)", "transparent"]} style={{marginTop: -100}} /> */}
-          {/* <Image
+        <ImageBackground
+          source={require("../../../assets/BookCover.png")}
+          style={{ ...styles.container_bookcover, left: backgroundOffset }}
+          imageStyle={{ opacity: 0.2 }}
+          alt="cover"
+        >
+          <Box style={{ elevation: 8 }}>
+            <Image
               source={require("../../../assets/BookCover.png")}
-              style={{ width: 159, height: 212 }}
-            /> */}
+              style={{ width: 167, height: 223 }}
+            />
+          </Box>
+        </ImageBackground>
 
-        </View>
+        <LinearGradient colors={["transparent", "rgba(255, 255, 255, 1)"]} style={{ ...styles.gradient, marginTop: -gradientHeight }} />
+
+        <Box alignItems="center" width={screenWidth}>
+          <InfoCard />
+        </Box>
+
+        <Text>
+          Lorem ipsum dolor sit amet consectetur. Lacus amet orci arcu vel tristique in erat. Id egestas a lectus vitae. Eget condimentum magna proin eget nibh amet turpis nunc. Tempus eget tincidunt semper amet tortor.
+        </Text>
       </ScrollView>
-    </View>
+    </Box>
   )
 }
 
 export default DetailScreen
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+const useStyle = () => {
+  const screenWidth = useWindowDimensions().width;
 
-  container_bookcover: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 650,
-    height: 450,
-  },
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#fff",
+      justifyContent: "center",
+      alignItems: "center",
+    },
 
-  top_bar: {
-    flex: 0,
-    zIndex: 2,
-    flexDirection: "row",
-    marginTop: 35,
-    marginBottom: 25,
-    width: 345,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+    container_bookcover: {
+      backgroundColor: "#fff",
+      justifyContent: "center",
+      alignItems: "center",
+      width: backgroundWidth,
+      height: 450,
+    },
 
-  left_topbar_button: {
-    width: 19,
-    height: 19,
-  },
+    top_bar: {
+      zIndex: 2,
+      flexDirection: "row",
+      marginTop: 35,
+      marginBottom: 25,
+      width: 345,
+      justifyContent: "center",
+      alignItems: "center",
+    },
 
-  right_topbar_button: {
-    width: 20,
-    height: 20,
-  },
-})
+    left_topbar_button: {
+      width: 19,
+      height: 19,
+    },
+
+    right_topbar_button: {
+      width: 20,
+      height: 20,
+    },
+
+    gradient: {
+      width: screenWidth,
+      height: gradientHeight,
+    },
+
+    info_card: {
+      width: 204,
+      height: 56,
+      borderRadius: 8,
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+      alignItems: "center",
+      marginTop: -45
+    },
+
+    rating: {
+      fontWeight: "700",
+      fontSize: 16,
+      lineHeight: 24
+    },
+
+    max_rating: {
+      fontWeight: "700",
+      fontSize: 16,
+      lineHeight: 24
+    }
+  })
+
+  return styles;
+}

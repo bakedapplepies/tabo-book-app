@@ -1,7 +1,5 @@
-import {
-  StatusBar,
-} from 'react-native'
 import React from 'react'
+import { StatusBar } from 'expo-status-bar'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import LoadingScreen from '../screens/auth/LoadingScreen';
@@ -22,6 +20,7 @@ const Root = () => {
           <Stack.Screen name="Login" component={LoginScreen}/>
           <Stack.Screen name="Signup" component={SignupScreen}/>
           <Stack.Screen name="Detail" component={DetailScreen}/>
+          
           <Stack.Screen name="BottomTab" component={BottomTab}/>
         </Stack.Navigator>
       </NavigationContainer>

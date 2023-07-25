@@ -1,15 +1,18 @@
 import {
   StyleSheet,
-  Text,
-  View,
-  Image,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native'
+import {
+  Text,
+  Box,
+  Image,
+  ScrollView
+} from 'native-base'
 import React from 'react'
 import Input from '../../components/Input'
 import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
+import tabo_theme from '../../theme/tabo_theme'
 
 
 const ProfileScreen = () => {
@@ -17,37 +20,37 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.top_bar}>
-        <View style={{ flex: 1 }}>
+    <Box style={styles.container} safeAreaTop>
+      <Box style={styles.top_bar}>
+        <Box style={{ flex: 1 }}>
           <IconButton
             imgSrc={require("../../../assets/ArrowBack.png")}
             style={styles.back_button}
             onPress={() => { navigation.goBack() }}
           />
-        </View>
+        </Box>
 
-        <View style={{ flex: 1 }}>
-          <Text style={styles.title}>
+        <Box style={{ flex: 1 }}>
+          <Text style={styles.title} color="primary.main">
             Edit Profile
           </Text>
-        </View>
+        </Box>
 
-        <View style={{ flex: 1 }} />
-      </View>
+        <Box style={{ flex: 1 }} />
+      </Box>
 
       <ScrollView style={{ flex: 0, }}>
-        <View style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
-          <Image source={require("../../../assets/Avatar.png")} style={styles.pfp_icon} />
+        <Box style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
+          <Image source={require("../../../assets/Avatar.png")} style={styles.pfp_icon} alt='pfp' />
           <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
-            <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} resizeMode="contain" />
+            <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} alt='camera'/>
           </TouchableOpacity>
           <Text style={styles.profile_name}>
             Marcus Curtis
           </Text>
-        </View>
+        </Box>
 
-        <View style={{ flex: 1 }}>
+        <Box style={{ flex: 1 }}>
           <Input label="NAME" placeholder="Name" />
           <Input label="EMAIL" placeholder="Email" />
           <Input label="MOBILE NUMBER" placeholder="Mobile number" />
@@ -55,12 +58,12 @@ const ProfileScreen = () => {
           <Input label="NEW PASSWORD" placeholder="New Password" secureTextEntry />
 
           <TouchableOpacity style={styles.update_button}>
-            <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} />
+            <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} alt='refresh' />
             <Text style={styles.update_text}>
               Update
             </Text>
           </TouchableOpacity>
-        </View>
+        </Box>
 
         <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 20 }}>
           <Text style={styles.signout_text}>
@@ -68,7 +71,7 @@ const ProfileScreen = () => {
           </Text>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </Box>
   )
 }
 
@@ -83,7 +86,6 @@ const styles = StyleSheet.create({
   },
 
   top_bar: {
-    flex: 0,
     flexDirection: "row",
     marginTop: 35,
     marginBottom: 25,
@@ -98,7 +100,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#F58216",
     fontWeight: "600",
     fontSize: 16,
     textAlign: "center",
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
 
   update_button: {
-    backgroundColor: "#F58216",
+    backgroundColor: tabo_theme.colors.primary.main,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

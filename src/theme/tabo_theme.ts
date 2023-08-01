@@ -1,5 +1,6 @@
 import { extendTheme } from "native-base";
 
+
 const tabo_theme = extendTheme({
   colors: {
     primary: {
@@ -33,7 +34,7 @@ const tabo_theme = extendTheme({
   },
 
   fonts: {
-
+    main: "WixMadeforDisplay"
   }
 });
 

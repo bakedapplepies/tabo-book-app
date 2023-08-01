@@ -1,12 +1,15 @@
 import {
-  View,
   ImageSourcePropType,
-  StyleSheet,
-  Text,
   TextInput,
+  View,
   TextInputProps,
-  Image
+  StyleSheet,
 } from 'react-native'
+import {
+  Box,
+  Text,
+  Image
+} from 'native-base'
 import React from 'react'
 
 
@@ -18,19 +21,19 @@ interface InputProps extends TextInputProps {
 const Input = (props: InputProps) => {
   return (
     <>
-    { props.label &&
-      <Text style={styles.field_header}>
-        {props.label}
-      </Text>
-    }
+      {props.label &&
+        <Text style={styles.field_header} fontFamily="WixMadeforDisplay">
+          {props.label}
+        </Text>
+      }
       <View style={{
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         marginLeft: props.icon ? 16 : 0
       }}>
-        { props.icon &&
-          <Image source={props.icon} style={styles.icon}/>
+        {props.icon &&
+          <Image source={props.icon} style={styles.icon} alt="icon" />
         }
         <TextInput
           style={[props.icon ? styles.input_field_icon : styles.input_field, props.style]}
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
     height: 36,
     borderRadius: 6,
     paddingHorizontal: 40,
+    fontFamily: "WixMadeforDisplay"
   },
 
   input_field: {
@@ -76,6 +80,7 @@ const styles = StyleSheet.create({
     width: 345,
     height: 48,
     borderRadius: 8,
-    paddingHorizontal: 13
+    paddingHorizontal: 13,
+    fontFamily: "WixMadeforDisplay"
   }
 })

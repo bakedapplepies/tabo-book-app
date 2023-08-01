@@ -11,6 +11,8 @@ import BookDisplay, { BookDisplayProps } from '../../components/BookDisplay';
 import {
   favoriteBooksData
 } from '../../data/BookData';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DetailScreen from './DetailScreen';
 
 
 const HomeScreen = () => {
@@ -33,8 +35,8 @@ const HomeScreen = () => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <Box style={styles.container}>
         <Box style={styles.backdrop} bg="primary.main">
-          <Text style={styles.title}>Hello, {accountName}!</Text>
-          <Text style={styles.subtitle}>Which book suits your current mood?</Text>
+          <Text style={styles.title} fontFamily="WixMadeforDisplay">Hello, {accountName}!</Text>
+          <Text style={styles.subtitle} fontFamily="WixMadeforDisplay">Which book suits your current mood?</Text>
         </Box>
 
         <Box style={styles.foredrop}>
@@ -45,15 +47,15 @@ const HomeScreen = () => {
               sidelen={64}
               style={{ margin: 18 }}
             />
-            <Text style={styles.account_name}>{accountName}</Text>
+            <Text style={styles.account_name} fontFamily="WixMadeforDisplay">{accountName}</Text>
           </Box>
-          <Text style={styles.account_desc}>
+          <Text style={styles.account_desc} fontFamily="WixMadeforDisplay">
             Lorem ipsum dolor sit amet consectetur. At vulputate vulputate id suscipit morbi. Tristique dolor dictum convallis nisl
           </Text>
 
         </Box>
 
-        <Text style={styles.category_title} color="primary.main">Favorites</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Favorites</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -61,7 +63,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main">Most Popular</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Most Popular</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -69,7 +71,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main">Top Rating</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Top Rating</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -77,7 +79,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main">Categories</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Categories</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -165,4 +167,17 @@ const styles = StyleSheet.create({
   },
 })
 
-export default HomeScreen
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackScreen = () => {
+  return (
+    <HomeStack.Navigator initialRouteName="Home" screenOptions={{
+      headerShown: false
+    }}>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Detail" component={DetailScreen} />
+    </HomeStack.Navigator>
+  );
+}
+
+export default HomeStackScreen

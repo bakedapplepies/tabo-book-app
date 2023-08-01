@@ -1,10 +1,12 @@
 import {
-  ImageBackground,
   Image,
-  StyleSheet,
   Text,
+  Box,
+} from 'native-base'
+import {
+  ImageBackground,
+  StyleSheet,
   TouchableOpacity,
-  View,
   ViewProps,
   ViewStyle,
   TouchableOpacityProps
@@ -21,19 +23,19 @@ export interface BookDisplayProps extends BookData, TouchableOpacityProps {
   enlarge?: boolean;
 }
 
-interface RatingProps extends ViewProps {
+interface RatingProps {
   label: string
 }
 
 const Rating = (props: RatingProps) => {
   return (
-    <View style={props.style}>
-      <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} />
-      <Text style={styles.rating_text}>
+    <Box style={styles.rating_view}>
+      <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} alt="star" />
+      <Text style={styles.rating_text} fontFamily="WixMadeforDisplay">
         {props.label}
       </Text>
-      <Text style={styles.max_rating_text}>/5</Text>
-    </View>
+      <Text style={styles.max_rating_text} fontFamily="WixMadeforDisplay">/5</Text>
+    </Box>
   );
 }
 
@@ -43,15 +45,20 @@ const BookDisplay = (props: BookDisplayProps) => {
   const navigation = useNavigation<BookDetailNavigationProps["navigation"]>();
 
   return (
-    <View style={{ ...props.style, flexDirection: "column" }}>
+    <Box style={{ ...props.style, flexDirection: "column" }}>
       {/* Book cover */}
       <TouchableOpacity
         style={props.enlarge ? styles.book_cover_view_enlarge : styles.book_cover_view}
         onPress={() => { navigation.navigate("Detail") }}
       >
-        <ImageBackground source={props.imgSrc} style={styles.book_cover} resizeMode="cover" resizeMethod="scale">
+        <ImageBackground
+          source={props.imgSrc}
+          style={styles.book_cover}
+          resizeMode="cover"
+          resizeMethod="scale"
+          alt="background"
+        >
           <Rating
-            style={styles.rating_view}
             label="4,8"
           />
         </ImageBackground>
@@ -70,7 +77,7 @@ const BookDisplay = (props: BookDisplayProps) => {
       >
         <Text style={styles.author} numberOfLines={1}>{props.author}</Text>
       </TouchableOpacity>
-    </View>
+    </Box>
   )
 }
 
@@ -95,12 +102,14 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#1A1A1A",
     marginHorizontal: 2,
+    lineHeight: 15,
   },
-
+  
   max_rating_text: {
     fontWeight: "700",
     fontSize: 8,
-    color: "#B3B3B3"
+    color: "#B3B3B3",
+    lineHeight: 15,
   },
 
   book_cover_view: {

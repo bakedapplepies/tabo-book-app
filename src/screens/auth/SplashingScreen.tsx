@@ -7,7 +7,7 @@ import {
 import React from 'react'
 
 
-const LoadingScreen = () => {
+const SplashScreen = () => {
 	return (
 		<View style={styles.container}>
 			<Image source={require("../../../assets/BookWhite.png")} style={styles.logo} />
@@ -16,7 +16,7 @@ const LoadingScreen = () => {
 	)
 }
 
-export default LoadingScreen
+export default SplashScreen
 
 const styles = StyleSheet.create({
 	container: {

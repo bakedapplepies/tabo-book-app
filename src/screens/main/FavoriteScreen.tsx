@@ -11,6 +11,8 @@ import IconButton from '../../components/IconButton'
 import BookData, { favoriteBooksData } from '../../data/BookData'
 import BookDisplay from '../../components/BookDisplay'
 import { useNavigation } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import DetailScreen from './DetailScreen'
 
 
 const FavoriteScreen = () => {
@@ -30,7 +32,7 @@ const FavoriteScreen = () => {
   }
 
   return (
-    <Box style={styles.container} safeAreaTop>
+    <Box style={styles.container}>
       {/* top bar */}
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
@@ -42,7 +44,7 @@ const FavoriteScreen = () => {
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main">
+          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplay">
             Favorite
           </Text>
         </Box>
@@ -61,8 +63,6 @@ const FavoriteScreen = () => {
   )
 }
 
-export default FavoriteScreen
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   top_bar: {
     flex: 0,
     flexDirection: "row",
-    marginTop: 35,
+    marginTop: 45,
     marginBottom: 25,
     width: 345,
     justifyContent: "center",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontWeight: "600",
+    fontWeight: "700",
     fontSize: 16,
     textAlign: "center",
   },
@@ -96,3 +96,18 @@ const styles = StyleSheet.create({
     width: 345,
   }
 })
+
+const FavoriteStack = createNativeStackNavigator();
+
+const FavoriteStackScreen = () => {
+  return (
+    <FavoriteStack.Navigator initialRouteName="Favorite" screenOptions={{
+      headerShown: false
+    }}>
+      <FavoriteStack.Screen name="Favorite" component={FavoriteScreen} />
+      <FavoriteStack.Screen name="Detail" component={DetailScreen} />
+    </FavoriteStack.Navigator>
+  );
+}
+
+export default FavoriteStackScreen

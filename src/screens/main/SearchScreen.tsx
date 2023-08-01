@@ -14,7 +14,8 @@ import Input from '../../components/Input'
 import BookData, { topBookSearchData } from '../../data/BookData'
 import { useNavigation } from '@react-navigation/native'
 import { RootStackParams } from '../../navigation/config'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+import DetailScreen from './DetailScreen'
 
 
 type NavigationProps = NativeStackScreenProps<RootStackParams, "Detail">;
@@ -32,11 +33,11 @@ const SearchScreen = () => {
 
 				<Box style={{ width: 120 }} >
 					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.title}>{title}</Text>
+						<Text numberOfLines={1} style={styles.title} fontFamily="WixMadeforDisplay">{title}</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.author}>{author}</Text>
+						<Text numberOfLines={1} style={styles.author} fontFamily="WixMadeforDisplay">{author}</Text>
 					</TouchableOpacity>
 				</Box>
 
@@ -63,7 +64,7 @@ const SearchScreen = () => {
 				placeholderTextColor="#B3B3B3"
 			/>
 
-			<Text style={styles.top_book_search} color="primary.main">
+			<Text style={styles.top_book_search} color="primary.main" fontFamily="WixMadeforDisplay">
 				Top book search
 			</Text>
 
@@ -131,4 +132,17 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SearchScreen
+const SearchStack = createNativeStackNavigator();
+
+const SearchStackScreen = () => {
+  return (
+    <SearchStack.Navigator initialRouteName="Search" screenOptions={{
+      headerShown: false
+    }}>
+      <SearchStack.Screen name="Search" component={SearchScreen} />
+      <SearchStack.Screen name="Detail" component={DetailScreen} />
+    </SearchStack.Navigator>
+  );
+}
+
+export default SearchStackScreen

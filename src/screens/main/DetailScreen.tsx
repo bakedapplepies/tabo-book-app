@@ -1,10 +1,10 @@
 import {
   Text,
   Box,
-  ScrollView
+  ScrollView,
+  FlatList
 } from 'native-base'
 import {
-  View,
   StyleSheet,
   Image,
   ImageBackground,
@@ -14,6 +14,8 @@ import React from 'react'
 import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
+import CommentData from '../../data/CommentData'
+import Comment, { CommentProps } from '../../components/Comment'
 
 
 const gradientHeight: number = 100;
@@ -26,21 +28,32 @@ const InfoCard = () => {
     <Box backgroundColor="gray.50" style={styles.info_card}>
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
         <Image source={require("../../../assets/Star.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.rating} color="gray.900">
+        <Text style={styles.average_rating} color="gray.900" fontFamily="WixMadeforDisplay">
           {4.8}
         </Text>
-        <Text style={styles.max_rating} color="gray.300">/5</Text>
+        <Text style={styles.max_rating} color="gray.300" fontFamily="WixMadeforDisplay">/5</Text>
       </Box>
 
       <Box borderWidth={0.5} borderColor="gray.200" bgColor="gray.200" height={8} />
 
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
         <Image source={require("../../../assets/Eye.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.rating} color="gray.900">
+        <Text style={styles.average_rating} color="gray.900" fontFamily="WixMadeforDisplay">
           {4.2}k
         </Text>
       </Box>
     </Box>
+  );
+}
+
+const renderComment = (item: CommentProps) => {
+  return (
+    <Comment
+      user={item.user}
+      time_ago={item.time_ago}
+      rating={item.rating}
+      comment={item.comment}
+    />
   );
 }
 
@@ -54,7 +67,7 @@ const DetailScreen = () => {
   const backgroundOffset = (screenWidth - backgroundWidth) / 2;
 
   return (
-    <Box style={styles.container} safeAreaTop safeAreaX>
+    <Box style={styles.container} safeAreaX>
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
           <IconButton
@@ -69,8 +82,8 @@ const DetailScreen = () => {
         </Box>
       </Box>
 
-      <ScrollView style={{ marginTop: -80 }}>
-        <LinearGradient colors={["rgba(255, 255, 255, 1)", "transparent"]} style={{ ...styles.gradient, zIndex: 1, marginBottom: -gradientHeight }} />
+      <ScrollView style={{ marginTop: -90 }}>
+        <LinearGradient colors={["white", "transparent"]} style={{ ...styles.gradient, zIndex: 1, marginBottom: -gradientHeight }} />
 
         <ImageBackground
           source={require("../../../assets/BookCover.png")}
@@ -86,21 +99,35 @@ const DetailScreen = () => {
           </Box>
         </ImageBackground>
 
-        <LinearGradient colors={["transparent", "rgba(255, 255, 255, 1)"]} style={{ ...styles.gradient, marginTop: -gradientHeight }} />
+        <LinearGradient colors={["transparent", "white"]} style={{ ...styles.gradient, marginTop: -gradientHeight }} />
 
         <Box alignItems="center" width={screenWidth}>
-          <InfoCard />
-        </Box>
+          <InfoCard/>
 
-        <Text>
-          Lorem ipsum dolor sit amet consectetur. Lacus amet orci arcu vel tristique in erat. Id egestas a lectus vitae. Eget condimentum magna proin eget nibh amet turpis nunc. Tempus eget tincidunt semper amet tortor.
-        </Text>
+          <Text style={{ width: 345, marginTop: 26, lineHeight: 22 }} fontFamily="WixMadeforDisplay">
+            Lorem ipsum dolor sit amet consectetur. Lacus amet orci arcu vel tristique in erat. Id egestas a lectus vitae. Eget condimentum magna proin eget nibh amet turpis nunc. Tempus eget tincidunt semper amet tortor.
+          </Text>
+
+          {/* Dash */}
+          <Box
+            borderWidth={0.4}
+            width={345}
+            marginTop={26}
+            backgroundColor="gray.100"
+            borderColor="gray.100"
+          />
+
+          <FlatList
+            data={CommentData["b1"]}
+            renderItem={({ item }) => renderComment(item)}
+            scrollEnabled={false}
+            style={{ marginBottom: 20 }}
+          />
+        </Box>
       </ScrollView>
     </Box>
   )
 }
-
-export default DetailScreen
 
 const useStyle = () => {
   const screenWidth = useWindowDimensions().width;
@@ -108,13 +135,13 @@ const useStyle = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#fff",
+      backgroundColor: "#FFF",
       justifyContent: "center",
       alignItems: "center",
     },
 
     container_bookcover: {
-      backgroundColor: "#fff",
+      backgroundColor: "#FFF",
       justifyContent: "center",
       alignItems: "center",
       width: backgroundWidth,
@@ -124,7 +151,7 @@ const useStyle = () => {
     top_bar: {
       zIndex: 2,
       flexDirection: "row",
-      marginTop: 35,
+      marginTop: 45,
       marginBottom: 25,
       width: 345,
       justifyContent: "center",
@@ -156,7 +183,7 @@ const useStyle = () => {
       marginTop: -45
     },
 
-    rating: {
+    average_rating: {
       fontWeight: "700",
       fontSize: 16,
       lineHeight: 24
@@ -171,3 +198,5 @@ const useStyle = () => {
 
   return styles;
 }
+
+export default DetailScreen

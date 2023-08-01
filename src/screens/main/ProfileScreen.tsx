@@ -13,6 +13,8 @@ import Input from '../../components/Input'
 import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
 import tabo_theme from '../../theme/tabo_theme'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import DetailScreen from './DetailScreen'
 
 
 const ProfileScreen = () => {
@@ -20,7 +22,7 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <Box style={styles.container} safeAreaTop>
+    <Box style={styles.container}>
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
           <IconButton
@@ -31,7 +33,7 @@ const ProfileScreen = () => {
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main">
+          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplay">
             Edit Profile
           </Text>
         </Box>
@@ -39,13 +41,13 @@ const ProfileScreen = () => {
         <Box style={{ flex: 1 }} />
       </Box>
 
-      <ScrollView style={{ flex: 0, }}>
+      <ScrollView>
         <Box style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
           <Image source={require("../../../assets/Avatar.png")} style={styles.pfp_icon} alt='pfp' />
           <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
             <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} alt='camera'/>
           </TouchableOpacity>
-          <Text style={styles.profile_name}>
+          <Text style={styles.profile_name} fontFamily="WixMadeforDisplay">
             Marcus Curtis
           </Text>
         </Box>
@@ -59,14 +61,14 @@ const ProfileScreen = () => {
 
           <TouchableOpacity style={styles.update_button}>
             <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} alt='refresh' />
-            <Text style={styles.update_text}>
+            <Text style={styles.update_text} fontFamily="WixMadeforDisplay">
               Update
             </Text>
           </TouchableOpacity>
         </Box>
 
         <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 20 }}>
-          <Text style={styles.signout_text}>
+          <Text style={styles.signout_text} fontFamily="WixMadeforDisplay">
             Sign out
           </Text>
         </TouchableOpacity>
@@ -74,8 +76,6 @@ const ProfileScreen = () => {
     </Box>
   )
 }
-
-export default ProfileScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
   top_bar: {
     flexDirection: "row",
-    marginTop: 35,
+    marginTop: 45,
     marginBottom: 25,
     width: 345,
     justifyContent: "center",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontWeight: "600",
+    fontWeight: "700",
     fontSize: 16,
     textAlign: "center",
   },
@@ -127,7 +127,10 @@ const styles = StyleSheet.create({
 
   profile_name: {
     fontWeight: "700",
-    fontSize: 24
+    fontSize: 24,
+    lineHeight: 36,
+    marginTop: 10,
+    marginBottom: -10
   },
 
   update_button: {
@@ -158,3 +161,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 })
+
+const ProfileStack = createNativeStackNavigator();
+
+const ProfileStackScreen = () => {
+  return (
+    <ProfileStack.Navigator initialRouteName="Profile" screenOptions={{
+      headerShown: false
+    }}>
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+      <ProfileStack.Screen name="Detail" component={DetailScreen} />
+    </ProfileStack.Navigator>
+  );
+}
+
+export default ProfileStackScreen

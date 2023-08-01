@@ -1,8 +1,10 @@
 import {
 	StyleSheet,
-	Text,
-	View
 } from 'react-native'
+import {
+  Text,
+  Box,
+} from 'native-base'
 import React from 'react'
 
 

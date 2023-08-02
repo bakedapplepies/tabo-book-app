@@ -44,7 +44,7 @@ const FavoriteScreen = () => {
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplay">
+          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplayBold">
             Favorite
           </Text>
         </Box>
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontWeight: "700",
     fontSize: 16,
     textAlign: "center",
   },

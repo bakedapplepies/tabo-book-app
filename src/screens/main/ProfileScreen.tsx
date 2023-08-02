@@ -12,7 +12,7 @@ import React from 'react'
 import Input from '../../components/Input'
 import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
-import tabo_theme from '../../theme/tabo_theme'
+import tabo_theme from '../../theme'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import DetailScreen from './DetailScreen'
 
@@ -33,7 +33,7 @@ const ProfileScreen = () => {
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplay">
+          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplayBold">
             Edit Profile
           </Text>
         </Box>
@@ -47,7 +47,7 @@ const ProfileScreen = () => {
           <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
             <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} alt='camera'/>
           </TouchableOpacity>
-          <Text style={styles.profile_name} fontFamily="WixMadeforDisplay">
+          <Text style={styles.profile_name} fontFamily="WixMadeforDisplayBold">
             Marcus Curtis
           </Text>
         </Box>
@@ -61,14 +61,14 @@ const ProfileScreen = () => {
 
           <TouchableOpacity style={styles.update_button}>
             <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} alt='refresh' />
-            <Text style={styles.update_text} fontFamily="WixMadeforDisplay">
+            <Text style={styles.update_text} fontFamily="WixMadeforDisplayRegular">
               Update
             </Text>
           </TouchableOpacity>
         </Box>
 
         <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 20 }}>
-          <Text style={styles.signout_text} fontFamily="WixMadeforDisplay">
+          <Text style={styles.signout_text} fontFamily="WixMadeforDisplayRegular">
             Sign out
           </Text>
         </TouchableOpacity>
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontWeight: "700",
     fontSize: 16,
     textAlign: "center",
   },
@@ -126,7 +125,6 @@ const styles = StyleSheet.create({
   },
 
   profile_name: {
-    fontWeight: "700",
     fontSize: 24,
     lineHeight: 36,
     marginTop: 10,
@@ -151,7 +149,6 @@ const styles = StyleSheet.create({
 
   update_text: {
     color: "white",
-    fontWeight: "600",
     fontSize: 16,
     marginHorizontal: 5,
   },

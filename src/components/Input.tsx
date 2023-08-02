@@ -1,7 +1,6 @@
 import {
   ImageSourcePropType,
   TextInput,
-  View,
   TextInputProps,
   StyleSheet,
 } from 'react-native'
@@ -22,11 +21,11 @@ const Input = (props: InputProps) => {
   return (
     <>
       {props.label &&
-        <Text style={styles.field_header} fontFamily="WixMadeforDisplay">
+        <Text style={styles.field_header} fontFamily="WixMadeforDisplayRegular">
           {props.label}
         </Text>
       }
-      <View style={{
+      <Box style={{
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
@@ -42,7 +41,7 @@ const Input = (props: InputProps) => {
           secureTextEntry={props.secureTextEntry}
           underlineColorAndroid="transparent"
         />
-      </View>
+      </Box>
     </>
   )
 }
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
   field_header: {
     marginBottom: 6,
     color: "#B3B3B3",
-    fontWeight: "500"
   },
 
   input_field_icon: {

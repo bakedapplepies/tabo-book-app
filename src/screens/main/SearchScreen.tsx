@@ -33,11 +33,11 @@ const SearchScreen = () => {
 
 				<Box style={{ width: 120 }} >
 					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.title} fontFamily="WixMadeforDisplay">{title}</Text>
+						<Text numberOfLines={1} style={styles.title} fontFamily="WixMadeforDisplaySemiBold">{title}</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.author} fontFamily="WixMadeforDisplay">{author}</Text>
+						<Text numberOfLines={1} style={styles.author} fontFamily="WixMadeforDisplayRegular">{author}</Text>
 					</TouchableOpacity>
 				</Box>
 
@@ -64,7 +64,7 @@ const SearchScreen = () => {
 				placeholderTextColor="#B3B3B3"
 			/>
 
-			<Text style={styles.top_book_search} color="primary.main" fontFamily="WixMadeforDisplay">
+			<Text style={styles.top_book_search} color="primary.main" fontFamily="WixMadeforDisplayBold">
 				Top book search
 			</Text>
 
@@ -103,14 +103,13 @@ const styles = StyleSheet.create({
 	top_book_search: {
 		width: 345,
 		fontSize: 17,
-		fontWeight: "700",
 		marginVertical: 5,
 	},
 
 	entry_style: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginBottom: 12,
+		marginBottom: 15,
 	},
 
 	book_icon: {
@@ -121,13 +120,13 @@ const styles = StyleSheet.create({
 	},
 
 	title: {
-		fontWeight: "600",
+    width: "90%",
 		fontSize: 14,
 		marginBottom: 4
 	},
 
 	author: {
-		fontWeight: "400",
+    width: "90%",
 		fontSize: 12
 	}
 })

@@ -1,15 +1,19 @@
 import { NativeBaseProvider } from 'native-base';
 import Root from './src/navigation/Root';
-import tabo_theme from './src/theme/tabo_theme';
+import tabo_theme from './src/theme';
 import { useFonts } from "expo-font";
+// import { useEffect } from 'react';
+// import * as SplashScreen from 'expo-splash-screen'
 
 
 export default function App() {
-  useFonts({
-    "WixMadeforDisplay": require("./assets/fonts/WixMadeforDisplay.ttf")
+  const [_fontsLoaded, _error] = useFonts({
+    WixMadeforDisplayRegular:   require("./assets/fonts/WixMadeforDisplay-Regular.ttf"),
+    WixMadeforDisplayMedium:    require("./assets/fonts/WixMadeforDisplay-Medium.ttf"),
+    WixMadeforDisplaySemiBold:  require("./assets/fonts/WixMadeforDisplay-SemiBold.ttf"),
+    WixMadeforDisplayBold:      require("./assets/fonts/WixMadeforDisplay-Bold.ttf"),
+    WixMadeforDisplayExtraBold: require("./assets/fonts/WixMadeforDisplay-ExtraBold.ttf"),
   });
-
-  // setTimeout(() => { console.log("ho"); }, 2000);
 
   return (
     <NativeBaseProvider theme={tabo_theme}>

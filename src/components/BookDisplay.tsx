@@ -31,10 +31,10 @@ const Rating = (props: RatingProps) => {
   return (
     <Box style={styles.rating_view}>
       <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} alt="star" />
-      <Text style={styles.rating_text} fontFamily="WixMadeforDisplay">
+      <Text style={styles.rating_text} fontFamily="WixMadeforDisplayBold">
         {props.label}
       </Text>
-      <Text style={styles.max_rating_text} fontFamily="WixMadeforDisplay">/5</Text>
+      <Text style={styles.max_rating_text} fontFamily="WixMadeforDisplayBold">/5</Text>
     </Box>
   );
 }
@@ -68,14 +68,14 @@ const BookDisplay = (props: BookDisplayProps) => {
       <TouchableOpacity
         onPress={() => { navigation.navigate("Detail") }}
       >
-        <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
+        <Text style={styles.title} numberOfLines={1} fontFamily="WixMadeforDisplaySemiBold">{props.title}</Text>
       </TouchableOpacity>
 
       {/* Author */}
       <TouchableOpacity
         onPress={() => { navigation.navigate("Detail") }}  // change to author detail
       >
-        <Text style={styles.author} numberOfLines={1}>{props.author}</Text>
+        <Text style={styles.author} numberOfLines={1} fontFamily="WixMadeforDisplayRegular">{props.author}</Text>
       </TouchableOpacity>
     </Box>
   )
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
   title: {
     width: 129,
     fontSize: 14,
-    fontWeight: "600",
     marginTop: 8
   },
 
@@ -139,7 +138,6 @@ const styles = StyleSheet.create({
     width: 129,
     color: "#808080",
     fontSize: 12,
-    fontWeight: "400",
     marginTop: 2,
   }
 })

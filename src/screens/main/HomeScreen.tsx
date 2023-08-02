@@ -35,8 +35,8 @@ const HomeScreen = () => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <Box style={styles.container}>
         <Box style={styles.backdrop} bg="primary.main">
-          <Text style={styles.title} fontFamily="WixMadeforDisplay">Hello, {accountName}!</Text>
-          <Text style={styles.subtitle} fontFamily="WixMadeforDisplay">Which book suits your current mood?</Text>
+          <Text style={styles.title} fontFamily="WixMadeforDisplayBold">Hello, {accountName}!</Text>
+          <Text style={styles.subtitle} fontFamily="WixMadeforDisplayRegular">Which book suits your current mood?</Text>
         </Box>
 
         <Box style={styles.foredrop}>
@@ -47,15 +47,15 @@ const HomeScreen = () => {
               sidelen={64}
               style={{ margin: 18 }}
             />
-            <Text style={styles.account_name} fontFamily="WixMadeforDisplay">{accountName}</Text>
+            <Text style={styles.account_name} fontFamily="WixMadeforDisplayBold">{accountName}</Text>
           </Box>
-          <Text style={styles.account_desc} fontFamily="WixMadeforDisplay">
+          <Text style={styles.account_desc} fontFamily="WixMadeforDisplayRegular">
             Lorem ipsum dolor sit amet consectetur. At vulputate vulputate id suscipit morbi. Tristique dolor dictum convallis nisl
           </Text>
 
         </Box>
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Favorites</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Favorites</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -63,7 +63,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Most Popular</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Most Popular</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -71,7 +71,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Top Rating</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Top Rating</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -79,7 +79,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplay">Categories</Text>
+        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Categories</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     lineHeight: 36,
     color: "white",
     fontSize: 24,
-    fontWeight: "700",
     textAlign: "center",
   },
 
@@ -143,21 +142,18 @@ const styles = StyleSheet.create({
   },
 
   account_name: {
-    fontWeight: "700",
     fontSize: 24,
     lineHeight: 36
   },
 
   account_desc: {
     marginHorizontal: 18,
-    fontWeight: "300",
     fontSize: 14,
     lineHeight: 22
   },
 
   category_title: {
     marginTop: 30,
-    fontWeight: "700",
     width: 327,
   },
 

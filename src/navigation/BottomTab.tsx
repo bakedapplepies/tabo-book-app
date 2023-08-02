@@ -1,6 +1,7 @@
 import {
   StyleSheet,
   Image,
+  TouchableOpacity,
 } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,7 +9,7 @@ import HomeStackScreen from '../screens/main/HomeScreen';
 import SearchStackScreen from '../screens/main/SearchScreen';
 import FavoriteStackScreen from '../screens/main/FavoriteScreen';
 import ProfileStackScreen from '../screens/main/ProfileScreen';
-import tabo_theme from '../theme/tabo_theme';
+import tabo_theme from '../theme';
 
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
@@ -18,7 +19,7 @@ const BottomTab = () => {
   return (
     <Tab.Navigator initialRouteName="HomeStack" screenOptions={{
       headerShown: false,
-      tabBarActiveTintColor: mainColor
+      tabBarActiveTintColor: mainColor,
     }}>
 
       <Tab.Screen
@@ -28,7 +29,7 @@ const BottomTab = () => {
           tabBarIcon: ({ focused, color }) => (
             <Image
               source={require("../../assets/Home.png")}
-              style={[styles.bottom_tab_icon, { marginLeft: 100, tintColor: focused ? color : "black" }]}
+              style={[styles.bottom_tab_icon, { tintColor: focused ? color : "black" }]}
               resizeMode="contain"
             />
           ),
@@ -44,7 +45,7 @@ const BottomTab = () => {
           tabBarIcon: ({ focused, color }) => (
             <Image
               source={require("../../assets/Search.png")}
-              style={[styles.bottom_tab_icon, { marginLeft: 35, tintColor: focused ? color : "black" }]}
+              style={[styles.bottom_tab_icon, { tintColor: focused ? color : "black" }]}
               resizeMode="contain"
             />
           ),
@@ -60,7 +61,7 @@ const BottomTab = () => {
           tabBarIcon: ({ focused, color }) => (
             <Image
               source={require("../../assets/Favorite.png")}
-              style={[styles.bottom_tab_icon, { marginRight: 35, tintColor: focused ? color : "black" }]}
+              style={[styles.bottom_tab_icon, { tintColor: focused ? color : "black" }]}
               resizeMode="contain"
             />
           ),
@@ -76,7 +77,7 @@ const BottomTab = () => {
           tabBarIcon: ({ focused, color }) => (
             <Image
               source={require("../../assets/Profile.png")}
-              style={[styles.bottom_tab_icon, { marginRight: 100, tintColor: focused ? color : "black" }]}
+              style={[styles.bottom_tab_icon, { tintColor: focused ? color : "black" }]}
               resizeMode="contain"
             />
           ),
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
 
   bottom_tab: {
     height: 70,
-    paddingBottom: 12,
+    paddingBottom: 8,
     justifyContent: "space-between"
   },
 })

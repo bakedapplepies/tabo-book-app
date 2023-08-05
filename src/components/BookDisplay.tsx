@@ -23,7 +23,7 @@ export interface BookDisplayProps extends BookData, TouchableOpacityProps {
 }
 
 interface RatingProps {
-  label: string
+  averageRating: number
 }
 
 const Rating = (props: RatingProps) => {
@@ -31,7 +31,7 @@ const Rating = (props: RatingProps) => {
     <Box style={styles.rating_view}>
       <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} alt="star" />
       <Text style={styles.rating_text}  fontWeight={600}>
-        {props.label}
+        {props.averageRating}
       </Text>
       <Text style={styles.max_rating_text}  fontWeight={600}>/5</Text>
     </Box>
@@ -58,7 +58,7 @@ const BookDisplay = (props: BookDisplayProps) => {
           alt="background"
         >
           <Rating
-            label="4,8"
+            averageRating={4.8}
           />
         </ImageBackground>
       </TouchableOpacity>

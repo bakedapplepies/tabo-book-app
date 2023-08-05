@@ -71,7 +71,8 @@ const ProfileScreen = () => {
           <VStack space={4} marginBottom={8}>
             <FormControl>
               <FormControl.Label _text={{
-                color: "gray.300"
+                color: "gray.300",
+                fontWeight: 600
               }}>NAME</FormControl.Label>
               <Input
                 fontWeight={100}
@@ -83,7 +84,8 @@ const ProfileScreen = () => {
             </FormControl>
             <FormControl>
               <FormControl.Label _text={{
-                color: "gray.300"
+                color: "gray.300",
+                fontWeight: 600
               }}>EMAIL</FormControl.Label>
               <Input
                 fontWeight={100}
@@ -95,7 +97,8 @@ const ProfileScreen = () => {
             </FormControl>
             <FormControl>
               <FormControl.Label _text={{
-                color: "gray.300"
+                color: "gray.300",
+                fontWeight: 600
               }}>MOBILE NUMBER</FormControl.Label>
               <Input
                 fontWeight={100}
@@ -108,7 +111,8 @@ const ProfileScreen = () => {
             </FormControl>
             <FormControl>
               <FormControl.Label _text={{
-                color: "gray.300"
+                color: "gray.300",
+                fontWeight: 600
               }}>PASSWORD</FormControl.Label>
               <Input
                 fontWeight={100}
@@ -120,7 +124,8 @@ const ProfileScreen = () => {
             </FormControl>
             <FormControl>
               <FormControl.Label _text={{
-                color: "gray.300"
+                color: "gray.300",
+                fontWeight: 600
               }}>NEW PASSWORD</FormControl.Label>
               <Input
                 fontWeight={100}

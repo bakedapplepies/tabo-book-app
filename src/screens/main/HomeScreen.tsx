@@ -50,7 +50,7 @@ const HomeScreen = () => {
             />
             <Text style={styles.account_name}  fontWeight={600}>{accountName}</Text>
           </Box>
-          <Text style={styles.account_desc}  fontWeight={100} numberOfLines={3}>  {/*maybe limit desc.*/}
+          <Text style={styles.account_desc}  fontWeight={100}>  {/*maybe limit desc.*/}
             Lorem ipsum dolor sit amet consectetur. At vulputate vulputate id suscipit morbi. Tristique dolor dictum convallis nisl
           </Text>
 
@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
     marginTop: -80,
     backgroundColor: "white",
     width: 327,
-    height: 188,
     borderRadius: 8,
     elevation: 6,
     shadowOffset: { width: 0, height: 4 },
@@ -142,6 +141,7 @@ const styles = StyleSheet.create({
 
   account_desc: {
     marginHorizontal: 18,
+    marginBottom: 12,
     fontSize: 14,
     lineHeight: 22
   },

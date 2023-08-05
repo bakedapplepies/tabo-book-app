@@ -99,7 +99,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   backdrop: {
     paddingBottom: 42,
-    width: 359,
+    width: 369,
     height: 259,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   foredrop: {
     marginTop: -80,
     backgroundColor: "white",
-    width: 327,
+    width: 337,
     borderRadius: 8,
     elevation: 6,
     shadowOffset: { width: 0, height: 4 },

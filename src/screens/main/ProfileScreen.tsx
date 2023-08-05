@@ -15,24 +15,31 @@ import {
 } from 'native-base'
 import React from 'react'
 import tabo_theme from '../../theme'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 import DetailScreen from './DetailScreen'
+import { useNavigation } from '@react-navigation/native'
+import { RootStackParams } from '../../navigation/config'
 
+type NavigationProps = NativeStackScreenProps<RootStackParams>;
 
 const ProfileScreen = () => {
-
+  const navigation = useNavigation<NavigationProps["navigation"]>();
   return (
-    <Center bgColor="white">
+    <Center bgColor="white" flex={1}>
       {/* Top bar */}
       <Box style={styles.top_bar}>
         <Box flex={1}>
-          <IconButton size={8} paddingLeft={1.5} borderRadius="full"
+          <IconButton
+            size={9}
+            paddingLeft={1.5}
+            borderRadius="full"
+            onPress={() => { navigation.goBack(); }}
             icon={
               <Image
                 source={require("../../../assets/ArrowBack.png")}
-                style={styles.back_button}
+                width="65%"
+                height="65%"
                 alt="back"
-                resizeMode="contain"
               />
             }
           />
@@ -133,7 +140,7 @@ const ProfileScreen = () => {
           </TouchableOpacity>
         </Box>
 
-        <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 85 }}>
+        <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 25 }}>
           <Text fontWeight={100} textAlign="center" color="gray.500">
             Sign out
           </Text>
@@ -151,11 +158,6 @@ const styles = StyleSheet.create({
     width: 345,
     justifyContent: "center",
     alignItems: "center",
-  },
-
-  back_button: {
-    width: "65%",
-    height: "65%",
   },
 
   title: {

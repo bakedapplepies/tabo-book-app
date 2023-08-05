@@ -3,7 +3,8 @@ import {
   FlatList,
   ScrollView,
   Box,
-  Text
+  Text,
+  Center
 } from 'native-base'
 import React from 'react'
 import ProfileIcon from '../../components/ProfileIcon';
@@ -33,7 +34,7 @@ const HomeScreen = () => {
 
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
-      <Box style={styles.container}>
+      <Center bgColor="white" flex={1}>
         <Box style={styles.backdrop} bg="primary.main">
           <Text style={styles.title}  fontWeight={600}>Hello, {accountName}!</Text>
           <Text style={styles.subtitle}  fontWeight={100}>Which book suits your current mood?</Text>
@@ -49,7 +50,7 @@ const HomeScreen = () => {
             />
             <Text style={styles.account_name}  fontWeight={600}>{accountName}</Text>
           </Box>
-          <Text style={styles.account_desc}  fontWeight={100}>
+          <Text style={styles.account_desc}  fontWeight={100} numberOfLines={3}>  {/*maybe limit desc.*/}
             Lorem ipsum dolor sit amet consectetur. At vulputate vulputate id suscipit morbi. Tristique dolor dictum convallis nisl
           </Text>
 
@@ -90,19 +91,12 @@ const HomeScreen = () => {
         {/* Replace with BottomTab */}
         <Box style={{ marginVertical: 20 }} />
 
-      </Box>
+      </Center>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   backdrop: {
     paddingBottom: 42,
     width: 359,

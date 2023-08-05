@@ -1,4 +1,4 @@
-import { NativeBaseProvider } from 'native-base';
+import { Container, NativeBaseProvider } from 'native-base';
 import Root from './src/navigation/Root';
 import tabo_theme from './src/theme';
 import { useFonts } from "expo-font";
@@ -7,7 +7,7 @@ import { useFonts } from "expo-font";
 
 
 export default function App() {
-  const [_fontsLoaded, _error] = useFonts({
+  const [fontsLoaded, _error] = useFonts({
     WixMadeforDisplayRegular:   require("./assets/fonts/WixMadeforDisplay-Regular.ttf"),
     WixMadeforDisplayMedium:    require("./assets/fonts/WixMadeforDisplay-Medium.ttf"),
     WixMadeforDisplaySemiBold:  require("./assets/fonts/WixMadeforDisplay-SemiBold.ttf"),
@@ -17,7 +17,12 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={tabo_theme}>
-      <Root/>
+      { fontsLoaded &&
+        <Root/>
+      }
+      { !fontsLoaded &&
+        <Container/>
+      }
     </NativeBaseProvider>
   );
 }

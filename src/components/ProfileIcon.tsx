@@ -15,7 +15,7 @@ interface ProfileIconProps {
 
 const ProfileIcon = (props: ProfileIconProps) => {
 	return (
-		<Image source={props.source} style={{
+		<Image source={props.source} alt="profile" style={{
 			...props.style,
 			width: props.sidelen,
 			height: props.sidelen,

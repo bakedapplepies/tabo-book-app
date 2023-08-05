@@ -30,21 +30,23 @@ const Comment = (props: CommentProps) => {
             {props.user.name}
           </Text>
           <Text color="gray.300" fontSize={14} lineHeight={22}  fontWeight={100}>
-            {" "}• {props.time_ago}hrs ago
+            {"  "}•  {props.time_ago}hrs ago
           </Text>
         </HStack>
 
-        <HStack alignItems="center" justifyContent="space-evenly" width={50}>
+        {/* Rating */}
+        <HStack alignItems="center" justifyContent="space-evenly" width={50} mr={1}>
           <Image
             source={require("../../assets/Star.png")}
             style={{ width: 12, height: 12 }}
             alt="star"
           />
-          <Text style={styles.rating} color="gray.900"  fontWeight={600}>
+          <Text style={styles.rating} color="gray.900"  fontWeight={600} mx={2}>
             {4.8}
           </Text>
           <Text style={styles.max_rating} color="gray.300"  fontWeight={600}>/5</Text>
         </HStack>
+        
       </HStack>
 
       <Box width={345} marginTop={2} borderWidth={1} borderColor="gray.100" borderRadius={8} px={3} py={2}>

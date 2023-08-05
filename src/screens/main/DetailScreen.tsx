@@ -2,16 +2,17 @@ import {
   Text,
   Box,
   ScrollView,
-  FlatList
+  FlatList,
+  Image,
+  IconButton,
+  Center
 } from 'native-base'
 import {
   StyleSheet,
-  Image,
   ImageBackground,
   useWindowDimensions
 } from 'react-native'
 import React from 'react'
-import IconButton from '../../components/IconButton'
 import { useNavigation } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
 import CommentData from '../../data/CommentData'
@@ -27,18 +28,18 @@ const InfoCard = () => {
   return (
     <Box backgroundColor="gray.50" style={styles.info_card}>
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
-        <Image source={require("../../../assets/Star.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.average_rating} color="gray.900"  fontWeight={600}>
+        <Image source={require("../../../assets/Star.png")} style={{ width: 16, height: 16 }} alt="star" />
+        <Text style={styles.average_rating} color="gray.900" fontWeight={600}>
           {4.8}
         </Text>
-        <Text style={styles.max_rating} color="gray.300"  fontWeight={600}>/5</Text>
+        <Text style={styles.max_rating} color="gray.300" fontWeight={600}>/5</Text>
       </Box>
 
       <Box borderWidth={0.5} borderColor="gray.200" bgColor="gray.200" height={8} />
 
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
-        <Image source={require("../../../assets/Eye.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.average_rating} color="gray.900"  fontWeight={600}>
+        <Image source={require("../../../assets/Eye.png")} style={{ width: 16, height: 16 }} alt="eye" />
+        <Text style={styles.average_rating} color="gray.900" fontWeight={600}>
           {4.2}k
         </Text>
       </Box>
@@ -67,18 +68,38 @@ const DetailScreen = () => {
   const backgroundOffset = (screenWidth - backgroundWidth) / 2;
 
   return (
-    <Box style={styles.container} safeAreaX>
+    <Center safeAreaX bgColor="white" flex={1}>
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
           <IconButton
-            imgSrc={require("../../../assets/ArrowBack.png")}
-            style={styles.left_topbar_button}
-            onPress={() => { navigation.goBack() }}
+            size={9}
+            paddingLeft={1.5}
+            borderRadius="full"
+            onPress={() => { navigation.goBack(); }}
+            icon={
+              <Image
+                source={require("../../../assets/ArrowBack.png")}
+                width="65%"
+                height="65%"
+                alt="back"
+              />
+            }
           />
         </Box>
 
-        <Box style={{ flex: 1, alignItems: "flex-end" }}>
-          <IconButton imgSrc={require("../../../assets/Favorite.png")} style={styles.right_topbar_button} />
+        <Box flex={1} alignItems="flex-end">
+          <IconButton
+            size={9}
+            borderRadius="full"
+            onPress={() => {}}
+            icon={
+              <Image
+                source={require("../../../assets/Favorite.png")}
+                alt="favorite_icon"
+                style={{ width: "65%", height: "65%" }}
+              />
+            }
+          />
         </Box>
       </Box>
 
@@ -95,6 +116,7 @@ const DetailScreen = () => {
             <Image
               source={require("../../../assets/BookCover.png")}
               style={{ width: 167, height: 223 }}
+              alt="book_cover"
             />
           </Box>
         </ImageBackground>
@@ -102,9 +124,9 @@ const DetailScreen = () => {
         <LinearGradient colors={["transparent", "white"]} style={{ ...styles.gradient, marginTop: -gradientHeight }} />
 
         <Box alignItems="center" width={screenWidth}>
-          <InfoCard/>
+          <InfoCard />
 
-          <Text style={{ width: 345, marginTop: 26, lineHeight: 22 }}  fontWeight={100}>
+          <Text style={{ width: 345, marginTop: 26, lineHeight: 22 }} fontWeight={100}>
             Lorem ipsum dolor sit amet consectetur. Lacus amet orci arcu vel tristique in erat. Id egestas a lectus vitae. Eget condimentum magna proin eget nibh amet turpis nunc. Tempus eget tincidunt semper amet tortor.
           </Text>
 
@@ -125,7 +147,7 @@ const DetailScreen = () => {
           />
         </Box>
       </ScrollView>
-    </Box>
+    </Center>
   )
 }
 
@@ -133,13 +155,6 @@ const useStyle = () => {
   const screenWidth = useWindowDimensions().width;
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#FFF",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-
     container_bookcover: {
       backgroundColor: "#FFF",
       justifyContent: "center",

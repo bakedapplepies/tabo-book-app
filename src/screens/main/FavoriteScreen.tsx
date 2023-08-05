@@ -2,12 +2,14 @@ import {
   FlatList,
   Text,
   Box,
+  IconButton,
+  Image,
+  Center
 } from 'native-base'
 import {
   StyleSheet
 } from 'react-native'
 import React from 'react'
-import IconButton from '../../components/IconButton'
 import BookData, { favoriteBooksData } from '../../data/BookData'
 import BookDisplay from '../../components/BookDisplay'
 import { useNavigation } from '@react-navigation/native'
@@ -32,14 +34,23 @@ const FavoriteScreen = () => {
   }
 
   return (
-    <Box style={styles.container}>
+    <Center bgColor="white" flex={1}>
       {/* top bar */}
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
-          <IconButton
-            imgSrc={require("../../../assets/ArrowBack.png")}
-            style={styles.back_button}
-            onPress={() => { navigation.goBack() }}
+        <IconButton
+            size={9}
+            paddingLeft={1.5}
+            borderRadius="full"
+            onPress={() => { navigation.goBack(); }}
+            icon={
+              <Image
+                source={require("../../../assets/ArrowBack.png")}
+                width="65%"
+                height="65%"
+                alt="back"
+              />
+            }
           />
         </Box>
 
@@ -59,18 +70,11 @@ const FavoriteScreen = () => {
         numColumns={2}
       />
 
-    </Box>
+    </Center>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   top_bar: {
     flex: 0,
     flexDirection: "row",
@@ -79,11 +83,6 @@ const styles = StyleSheet.create({
     width: 345,
     justifyContent: "center",
     alignItems: "center"
-  },
-
-  back_button: {
-    width: 19,
-    height: 19,
   },
 
   title: {

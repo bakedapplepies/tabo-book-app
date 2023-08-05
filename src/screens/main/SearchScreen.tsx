@@ -3,14 +3,15 @@ import {
   Text,
   Box,
   Image,
+  IconButton,
+  Input,
+  Center,
 } from 'native-base'
 import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
 import React from 'react'
-import IconButton from '../../components/IconButton'
-import Input from '../../components/Input'
 import BookData, { topBookSearchData } from '../../data/BookData'
 import { useNavigation } from '@react-navigation/native'
 import { RootStackParams } from '../../navigation/config'
@@ -33,11 +34,11 @@ const SearchScreen = () => {
 
         <Box style={{ width: 120 }}>
           <TouchableOpacity>
-            <Text numberOfLines={1} style={styles.title}  fontWeight={400}>{title}</Text>
+            <Text numberOfLines={1} style={styles.title} fontWeight={400}>{title}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
-            <Text numberOfLines={1} style={styles.author}  fontWeight={100}>{author}</Text>
+            <Text numberOfLines={1} style={styles.author} fontWeight={100}>{author}</Text>
           </TouchableOpacity>
         </Box>
 
@@ -46,25 +47,49 @@ const SearchScreen = () => {
   }
 
   return (
-    <Box style={styles.container} safeAreaTop>
+    <Center safeAreaTop bgColor="white" flex={1}>
       {/* top bar */}
       <Box style={styles.top_bar}>
         <Box style={{ flex: 1 }}>
           <IconButton
-            imgSrc={require("../../../assets/ArrowBack.png")}
-            style={styles.back_button}
-            onPress={() => { navigation.goBack() }}
+            size={9}
+            paddingLeft={1.5}
+            borderRadius="full"
+            onPress={() => { navigation.goBack(); }}
+            icon={
+              <Image
+                source={require("../../../assets/ArrowBack.png")}
+                width="65%"
+                height="65%"
+                alt="back"
+              />
+            }
           />
         </Box>
       </Box>
 
       <Input
-        icon={require("../../../assets/Search.png")}
+        // icon={require("../../../assets/Search.png")}
+        InputLeftElement={
+          <Image
+            alt="search"
+            source={require("../../../assets/Search.png")}
+            width={4}
+            height={4}
+            ml={3}
+            tintColor="gray.300"
+          />
+        }
         placeholder="Search title, topics or authors"
-        placeholderTextColor="#B3B3B3"
+        placeholderTextColor="gray.300"
+        borderColor="gray.50"
+        bgColor="gray.50"
+        borderRadius={8}
+        width={345}
+        height={35}
       />
 
-      <Text style={styles.top_book_search} color="primary.main"  fontWeight={600}>
+      <Text style={styles.top_book_search} color="primary.main" fontWeight={600}>
         Top book search
       </Text>
 
@@ -74,22 +99,15 @@ const SearchScreen = () => {
         renderItem={({ item }) => renderTopBookSearch(item)}
         numColumns={2}
       />
-    </Box>
+    </Center>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   top_bar: {
     flexDirection: "row",
     marginTop: 35,
-    marginBottom: 25,
+    marginBottom: 10,
     width: 345,
     justifyContent: "center",
     alignItems: "center"
@@ -103,13 +121,14 @@ const styles = StyleSheet.create({
   top_book_search: {
     width: 345,
     fontSize: 17,
-    marginVertical: 5,
+    marginTop: 30,
+    marginBottom: 10
   },
 
   entry_style: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 18,
   },
 
   book_icon: {

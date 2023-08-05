@@ -28,17 +28,17 @@ const InfoCard = () => {
     <Box backgroundColor="gray.50" style={styles.info_card}>
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
         <Image source={require("../../../assets/Star.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.average_rating} color="gray.900" fontFamily="WixMadeforDisplayBold">
+        <Text style={styles.average_rating} color="gray.900"  fontWeight={600}>
           {4.8}
         </Text>
-        <Text style={styles.max_rating} color="gray.300" fontFamily="WixMadeforDisplayBold">/5</Text>
+        <Text style={styles.max_rating} color="gray.300"  fontWeight={600}>/5</Text>
       </Box>
 
       <Box borderWidth={0.5} borderColor="gray.200" bgColor="gray.200" height={8} />
 
       <Box flexDirection="row" alignItems="center" justifyContent="space-evenly" width={62} >
         <Image source={require("../../../assets/Eye.png")} style={{ width: 16, height: 16 }} />
-        <Text style={styles.average_rating} color="gray.900" fontFamily="WixMadeforDisplayBold">
+        <Text style={styles.average_rating} color="gray.900"  fontWeight={600}>
           {4.2}k
         </Text>
       </Box>
@@ -104,7 +104,7 @@ const DetailScreen = () => {
         <Box alignItems="center" width={screenWidth}>
           <InfoCard/>
 
-          <Text style={{ width: 345, marginTop: 26, lineHeight: 22 }} fontFamily="WixMadeforDisplayRegular">
+          <Text style={{ width: 345, marginTop: 26, lineHeight: 22 }}  fontWeight={100}>
             Lorem ipsum dolor sit amet consectetur. Lacus amet orci arcu vel tristique in erat. Id egestas a lectus vitae. Eget condimentum magna proin eget nibh amet turpis nunc. Tempus eget tincidunt semper amet tortor.
           </Text>
 

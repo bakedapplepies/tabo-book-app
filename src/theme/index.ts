@@ -30,46 +30,46 @@ const tabo_theme = extendTheme({
   },
   
   // later
-  // fontConfig: {
-  //   WixMadeforDisplay: {
-  //     50: {
-  //       normal: "WixMadeforDisplayRegular"
-  //     },
-  //     100: {
-  //       normal: "WixMadeforDisplayRegular"
-  //     },
-  //     200: {
-  //       normal: "WixMadeforDisplayRegularMedium"
-  //     },
-  //     300: {
-  //       normal: "WixMadeforDisplayRegularMedium"
-  //     },
-  //     400: {
-  //       normal: "WixMadeforDisplayRegularSemiBold"
-  //     },
-  //     500: {
-  //       normal: "WixMadeforDisplayRegularSemiBold"
-  //     },
-  //     600: {
-  //       normal: "WixMadeforDisplayRegularBold"
-  //     },
-  //     700: {
-  //       normal: "WixMadeforDisplayRegularBold"
-  //     },
-  //     800: {
-  //       normal: "WixMadeforDisplayRegularExtraBold"
-  //     },
-  //     900: {
-  //       normal: "WixMadeforDisplayRegularExtraBold"
-  //     },
-  //   }
-  // },
+  fontConfig: {
+    WixMadeforDisplay: {
+      50: {
+        normal: "WixMadeforDisplayRegular"
+      },
+      100: {
+        normal: "WixMadeforDisplayRegular"
+      },
+      200: {
+        normal: "WixMadeforDisplayMedium"
+      },
+      300: {
+        normal: "WixMadeforDisplayMedium"
+      },
+      400: {
+        normal: "WixMadeforDisplaySemiBold"
+      },
+      500: {
+        normal: "WixMadeforDisplaySemiBold"
+      },
+      600: {
+        normal: "WixMadeforDisplayBold"
+      },
+      700: {
+        normal: "WixMadeforDisplayBold"
+      },
+      800: {
+        normal: "WixMadeforDisplayExtraBold"
+      },
+      900: {
+        normal: "WixMadeforDisplayExtraBold"
+      },
+    }
+  },
 
-  // fonts: {
-  //   heading: "WixMadeforDisplay",
-  //   body: "WixMadeforDisplay",
-  //   mono: "WixMadeforDisplay"
-  // }
+  fonts: {
+    heading: "WixMadeforDisplay",
+    body: "WixMadeforDisplay",
+    mono: "WixMadeforDisplay"
+  }
 });
 
 export default tabo_theme;

@@ -7,7 +7,6 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  ViewProps,
   ViewStyle,
   TouchableOpacityProps
 } from 'react-native'
@@ -31,10 +30,10 @@ const Rating = (props: RatingProps) => {
   return (
     <Box style={styles.rating_view}>
       <Image source={require("../../assets/Star.png")} style={{ width: 8, height: 8 }} alt="star" />
-      <Text style={styles.rating_text} fontFamily="WixMadeforDisplayBold">
+      <Text style={styles.rating_text}  fontWeight={600}>
         {props.label}
       </Text>
-      <Text style={styles.max_rating_text} fontFamily="WixMadeforDisplayBold">/5</Text>
+      <Text style={styles.max_rating_text}  fontWeight={600}>/5</Text>
     </Box>
   );
 }
@@ -68,14 +67,14 @@ const BookDisplay = (props: BookDisplayProps) => {
       <TouchableOpacity
         onPress={() => { navigation.navigate("Detail") }}
       >
-        <Text style={styles.title} numberOfLines={1} fontFamily="WixMadeforDisplaySemiBold">{props.title}</Text>
+        <Text style={styles.title} numberOfLines={1}  fontWeight={400}>{props.title}</Text>
       </TouchableOpacity>
 
       {/* Author */}
       <TouchableOpacity
         onPress={() => { navigation.navigate("Detail") }}  // change to author detail
       >
-        <Text style={styles.author} numberOfLines={1} fontFamily="WixMadeforDisplayRegular">{props.author}</Text>
+        <Text style={styles.author} numberOfLines={1}  fontWeight={100}>{props.author}</Text>
       </TouchableOpacity>
     </Box>
   )

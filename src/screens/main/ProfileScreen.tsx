@@ -6,12 +6,14 @@ import {
   Text,
   Box,
   Image,
-  ScrollView
+  ScrollView,
+  IconButton,
+  FormControl,
+  Input,
+  VStack,
+  Center,
 } from 'native-base'
 import React from 'react'
-import Input from '../../components/Input'
-import IconButton from '../../components/IconButton'
-import { useNavigation } from '@react-navigation/native'
 import tabo_theme from '../../theme'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import DetailScreen from './DetailScreen'
@@ -19,72 +21,129 @@ import DetailScreen from './DetailScreen'
 
 const ProfileScreen = () => {
 
-  const navigation = useNavigation();
-
   return (
-    <Box style={styles.container}>
+    <Center bgColor="white">
+      {/* Top bar */}
       <Box style={styles.top_bar}>
-        <Box style={{ flex: 1 }}>
-          <IconButton
-            imgSrc={require("../../../assets/ArrowBack.png")}
-            style={styles.back_button}
-            onPress={() => { navigation.goBack() }}
+        <Box flex={1}>
+          <IconButton size={8} paddingLeft={1.5} borderRadius="full"
+            icon={
+              <Image
+                source={require("../../../assets/ArrowBack.png")}
+                style={styles.back_button}
+                alt="back"
+                resizeMode="contain"
+              />
+            }
           />
+
         </Box>
 
-        <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplayBold">
+        <Box flex={1}>
+          <Text style={styles.title} color="primary.main" fontWeight={600}>
             Edit Profile
           </Text>
         </Box>
 
-        <Box style={{ flex: 1 }} />
+        <Box flex={1} />
       </Box>
 
       <ScrollView>
         <Box style={{ flex: 1, alignItems: "center", marginBottom: 40 }}>
           <Image source={require("../../../assets/Avatar.png")} style={styles.pfp_icon} alt='pfp' />
           <TouchableOpacity style={{ marginTop: -15, ...styles.camera_icon }}>
-            <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} alt='camera'/>
+            <Image source={require("../../../assets/Camera.png")} style={styles.camera_icon_img} alt='camera' />
           </TouchableOpacity>
-          <Text style={styles.profile_name} fontFamily="WixMadeforDisplayBold">
+          <Text style={styles.profile_name} fontWeight={600}>
             Marcus Curtis
           </Text>
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Input label="NAME" placeholder="Name" />
-          <Input label="EMAIL" placeholder="Email" />
-          <Input label="MOBILE NUMBER" placeholder="Mobile number" />
-          <Input label="PASSWORD" placeholder="Password" secureTextEntry />
-          <Input label="NEW PASSWORD" placeholder="New Password" secureTextEntry />
+          {/* Form controls */}
+          <VStack space={4} marginBottom={8}>
+            <FormControl>
+              <FormControl.Label _text={{
+                color: "gray.300"
+              }}>NAME</FormControl.Label>
+              <Input
+                fontWeight={100}
+                fontSize={16}
+                placeholder="Name"
+                bgColor="gray.50"
+                borderColor="gray.50"
+              />
+            </FormControl>
+            <FormControl>
+              <FormControl.Label _text={{
+                color: "gray.300"
+              }}>EMAIL</FormControl.Label>
+              <Input
+                fontWeight={100}
+                fontSize={16}
+                placeholder="Email"
+                bgColor="gray.50"
+                borderColor="gray.50"
+              />
+            </FormControl>
+            <FormControl>
+              <FormControl.Label _text={{
+                color: "gray.300"
+              }}>MOBILE NUMBER</FormControl.Label>
+              <Input
+                fontWeight={100}
+                fontSize={16}
+                placeholder="Mobile
+              number"
+                bgColor="gray.50"
+                borderColor="gray.50"
+              />
+            </FormControl>
+            <FormControl>
+              <FormControl.Label _text={{
+                color: "gray.300"
+              }}>PASSWORD</FormControl.Label>
+              <Input
+                fontWeight={100}
+                fontSize={16}
+                placeholder="Password"
+                bgColor="gray.50"
+                borderColor="gray.50"
+              />
+            </FormControl>
+            <FormControl>
+              <FormControl.Label _text={{
+                color: "gray.300"
+              }}>NEW PASSWORD</FormControl.Label>
+              <Input
+                fontWeight={100}
+                fontSize={16}
+                placeholder="New Password"
+                bgColor="gray.50"
+                borderColor="gray.50"
+              />
+            </FormControl>
+          </VStack>
 
           <TouchableOpacity style={styles.update_button}>
-            <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} alt='refresh' />
-            <Text style={styles.update_text} fontFamily="WixMadeforDisplayRegular">
+            <Image source={require("../../../assets/Refresh.png")} style={styles.update_icon} alt="refresh" tintColor="white" />
+            <Text style={styles.update_text} fontWeight={600}>
               Update
             </Text>
           </TouchableOpacity>
         </Box>
 
-        <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 20 }}>
-          <Text style={styles.signout_text} fontFamily="WixMadeforDisplayRegular">
+        <TouchableOpacity style={{ flex: 1, marginTop: 30, marginBottom: 85 }}>
+          <Text fontWeight={100} textAlign="center" color="gray.500">
             Sign out
           </Text>
         </TouchableOpacity>
       </ScrollView>
-    </Box>
+    </Center>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   top_bar: {
     flexDirection: "row",
     marginTop: 45,
@@ -95,8 +154,8 @@ const styles = StyleSheet.create({
   },
 
   back_button: {
-    width: 19,
-    height: 19,
+    width: "65%",
+    height: "65%",
   },
 
   title: {
@@ -142,20 +201,14 @@ const styles = StyleSheet.create({
   },
 
   update_icon: {
-    width: 15,
-    height: 15,
-    marginHorizontal: 5,
+    width: 22,
+    height: 22,
   },
 
   update_text: {
     color: "white",
     fontSize: 16,
     marginHorizontal: 5,
-  },
-
-  signout_text: {
-    color: "#808080",
-    textAlign: "center",
   },
 })
 

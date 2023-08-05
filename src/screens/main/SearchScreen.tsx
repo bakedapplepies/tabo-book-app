@@ -1,8 +1,8 @@
 import {
-	FlatList,
-	Text,
-	Box,
-	Image,
+  FlatList,
+  Text,
+  Box,
+  Image,
 } from 'native-base'
 import {
   StyleSheet,
@@ -21,114 +21,114 @@ import DetailScreen from './DetailScreen'
 type NavigationProps = NativeStackScreenProps<RootStackParams, "Detail">;
 
 const SearchScreen = () => {
-	const navigation = useNavigation<NavigationProps["navigation"]>();
+  const navigation = useNavigation<NavigationProps["navigation"]>();
 
-	const renderTopBookSearch = ({ imgSrc, title, author }: BookData) => {
-		return (
-			<Box style={styles.entry_style}>
+  const renderTopBookSearch = ({ imgSrc, title, author }: BookData) => {
+    return (
+      <Box style={styles.entry_style}>
 
-				<TouchableOpacity onPress={() => { navigation.navigate("Detail") }}>
-					<Image source={imgSrc} style={styles.book_icon} alt='book_icon' />
-				</TouchableOpacity>
+        <TouchableOpacity onPress={() => { navigation.navigate("Detail") }}>
+          <Image source={imgSrc} style={styles.book_icon} alt='book_icon' />
+        </TouchableOpacity>
 
-				<Box style={{ width: 120 }} >
-					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.title} fontFamily="WixMadeforDisplaySemiBold">{title}</Text>
-					</TouchableOpacity>
+        <Box style={{ width: 120 }}>
+          <TouchableOpacity>
+            <Text numberOfLines={1} style={styles.title}  fontWeight={400}>{title}</Text>
+          </TouchableOpacity>
 
-					<TouchableOpacity>
-						<Text numberOfLines={1} style={styles.author} fontFamily="WixMadeforDisplayRegular">{author}</Text>
-					</TouchableOpacity>
-				</Box>
+          <TouchableOpacity>
+            <Text numberOfLines={1} style={styles.author}  fontWeight={100}>{author}</Text>
+          </TouchableOpacity>
+        </Box>
 
-			</Box>
-		);
-	}
+      </Box>
+    );
+  }
 
-	return (
-		<Box style={styles.container} safeAreaTop>
-			{/* top bar */}
-			<Box style={styles.top_bar}>
-				<Box style={{ flex: 1 }}>
-					<IconButton
-						imgSrc={require("../../../assets/ArrowBack.png")}
-						style={styles.back_button}
-						onPress={() => { navigation.goBack() }}
-					/>
-				</Box>
-			</Box>
+  return (
+    <Box style={styles.container} safeAreaTop>
+      {/* top bar */}
+      <Box style={styles.top_bar}>
+        <Box style={{ flex: 1 }}>
+          <IconButton
+            imgSrc={require("../../../assets/ArrowBack.png")}
+            style={styles.back_button}
+            onPress={() => { navigation.goBack() }}
+          />
+        </Box>
+      </Box>
 
-			<Input
-				icon={require("../../../assets/Search.png")}
-				placeholder="Search title, topics or authors"
-				placeholderTextColor="#B3B3B3"
-			/>
+      <Input
+        icon={require("../../../assets/Search.png")}
+        placeholder="Search title, topics or authors"
+        placeholderTextColor="#B3B3B3"
+      />
 
-			<Text style={styles.top_book_search} color="primary.main" fontFamily="WixMadeforDisplayBold">
-				Top book search
-			</Text>
+      <Text style={styles.top_book_search} color="primary.main"  fontWeight={600}>
+        Top book search
+      </Text>
 
-			<FlatList
-				style={{ width: 345, marginTop: 10 }}
-				data={topBookSearchData}
-				renderItem={({ item }) => renderTopBookSearch(item)}
-				numColumns={2}
-			/>
-		</Box>
-	)
+      <FlatList
+        style={{ width: 345, marginTop: 10 }}
+        data={topBookSearchData}
+        renderItem={({ item }) => renderTopBookSearch(item)}
+        numColumns={2}
+      />
+    </Box>
+  )
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-	top_bar: {
-		flexDirection: "row",
-		marginTop: 35,
-		marginBottom: 25,
-		width: 345,
-		justifyContent: "center",
-		alignItems: "center"
-	},
+  top_bar: {
+    flexDirection: "row",
+    marginTop: 35,
+    marginBottom: 25,
+    width: 345,
+    justifyContent: "center",
+    alignItems: "center"
+  },
 
-	back_button: {
-		width: 19,
-		height: 19,
-	},
+  back_button: {
+    width: 19,
+    height: 19,
+  },
 
-	top_book_search: {
-		width: 345,
-		fontSize: 17,
-		marginVertical: 5,
-	},
+  top_book_search: {
+    width: 345,
+    fontSize: 17,
+    marginVertical: 5,
+  },
 
-	entry_style: {
-		flexDirection: "row",
-		alignItems: "center",
-		marginBottom: 15,
-	},
+  entry_style: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
 
-	book_icon: {
-		width: 48,
-		height: 48,
-		borderRadius: 8,
-		marginRight: 10,
-	},
+  book_icon: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+    marginRight: 10,
+  },
 
-	title: {
+  title: {
     width: "90%",
-		fontSize: 14,
-		marginBottom: 4
-	},
+    fontSize: 14,
+    marginBottom: 4
+  },
 
-	author: {
+  author: {
     width: "90%",
-		fontSize: 12
-	}
+    fontSize: 12
+  }
 })
 
 const SearchStack = createNativeStackNavigator();

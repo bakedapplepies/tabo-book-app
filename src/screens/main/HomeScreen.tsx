@@ -35,8 +35,8 @@ const HomeScreen = () => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <Box style={styles.container}>
         <Box style={styles.backdrop} bg="primary.main">
-          <Text style={styles.title} fontFamily="WixMadeforDisplayBold">Hello, {accountName}!</Text>
-          <Text style={styles.subtitle} fontFamily="WixMadeforDisplayRegular">Which book suits your current mood?</Text>
+          <Text style={styles.title}  fontWeight={600}>Hello, {accountName}!</Text>
+          <Text style={styles.subtitle}  fontWeight={100}>Which book suits your current mood?</Text>
         </Box>
 
         <Box style={styles.foredrop}>
@@ -47,15 +47,15 @@ const HomeScreen = () => {
               sidelen={64}
               style={{ margin: 18 }}
             />
-            <Text style={styles.account_name} fontFamily="WixMadeforDisplayBold">{accountName}</Text>
+            <Text style={styles.account_name}  fontWeight={600}>{accountName}</Text>
           </Box>
-          <Text style={styles.account_desc} fontFamily="WixMadeforDisplayRegular">
+          <Text style={styles.account_desc}  fontWeight={100}>
             Lorem ipsum dolor sit amet consectetur. At vulputate vulputate id suscipit morbi. Tristique dolor dictum convallis nisl
           </Text>
 
         </Box>
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Favorites</Text>
+        <Text style={styles.category_title} color="primary.main"  fontWeight={600}>Favorites</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -63,7 +63,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Most Popular</Text>
+        <Text style={styles.category_title} color="primary.main"  fontWeight={600}>Most Popular</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -71,7 +71,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Top Rating</Text>
+        <Text style={styles.category_title} color="primary.main"  fontWeight={600}>Top Rating</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}
@@ -79,7 +79,7 @@ const HomeScreen = () => {
           horizontal
         />
 
-        <Text style={styles.category_title} color="primary.main" fontFamily="WixMadeforDisplayBold">Categories</Text>
+        <Text style={styles.category_title} color="primary.main"  fontWeight={600}>Categories</Text>
         <FlatList
           style={styles.flatlist_style}
           data={favoriteBooksData}

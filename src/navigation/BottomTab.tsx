@@ -1,7 +1,6 @@
 import {
   StyleSheet,
   Image,
-  TouchableOpacity,
 } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,6 +19,10 @@ const BottomTab = () => {
     <Tab.Navigator initialRouteName="HomeStack" screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: mainColor,
+      tabBarStyle: {
+        paddingHorizontal: 80,
+        height: 65,
+      }
     }}>
 
       <Tab.Screen
@@ -34,7 +37,6 @@ const BottomTab = () => {
             />
           ),
           tabBarShowLabel: false,
-          tabBarStyle: styles.bottom_tab,
         }}
       />
 
@@ -50,7 +52,6 @@ const BottomTab = () => {
             />
           ),
           tabBarShowLabel: false,
-          tabBarStyle: styles.bottom_tab,
         }}
       />
 
@@ -66,7 +67,6 @@ const BottomTab = () => {
             />
           ),
           tabBarShowLabel: false,
-          tabBarStyle: styles.bottom_tab,
         }}
       />
 
@@ -82,7 +82,6 @@ const BottomTab = () => {
             />
           ),
           tabBarShowLabel: false,
-          tabBarStyle: styles.bottom_tab,
         }}
       />
 
@@ -96,11 +95,5 @@ const styles = StyleSheet.create({
   bottom_tab_icon: {
     width: 30,
     height: 30,
-  },
-
-  bottom_tab: {
-    height: 70,
-    paddingBottom: 8,
-    justifyContent: "space-between"
-  },
+  }
 })

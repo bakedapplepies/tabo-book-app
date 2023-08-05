@@ -4,3 +4,4 @@ Theme
 Firebase Auth
 Splash Screen
 Async/Wait
+SVGs

@@ -21,7 +21,7 @@ const Input = (props: InputProps) => {
   return (
     <>
       {props.label &&
-        <Text style={styles.field_header} fontFamily="WixMadeforDisplayRegular">
+        <Text style={styles.field_header}  fontWeight={100}>
           {props.label}
         </Text>
       }

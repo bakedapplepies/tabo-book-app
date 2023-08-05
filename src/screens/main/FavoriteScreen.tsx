@@ -44,7 +44,7 @@ const FavoriteScreen = () => {
         </Box>
 
         <Box style={{ flex: 1 }}>
-          <Text style={styles.title} color="primary.main" fontFamily="WixMadeforDisplayBold">
+          <Text style={styles.title} color="primary.main"  fontWeight={600}>
             Favorite
           </Text>
         </Box>
